@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUIVRE 2026 — Rapport d'Investissement Complet | Crypto Comiks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --copper: #B87333;
+            --copper-light: #D4956A;
+            --copper-dark: #8B4513;
+            --gold: #FFD700;
+            --bg-primary: #0D0D0D;
+            --bg-secondary: #141414;
+            --bg-card: #1A1A1A;
+            --bg-card-hover: #222222;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --text-muted: #707070;
+            --border: #2A2A2A;
+            --success: #00D26A;
+            --warning: #FFB800;
+            --danger: #FF4757;
+            --blue: #4A9FFF;
+            --purple: #A855F7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--copper);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--copper);
+        }
+
+        .nav-level {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-level-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-level-btn:hover,
+        .nav-level-btn.active {
+            background: var(--copper);
+            border-color: var(--copper);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(184, 115, 51, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(184, 115, 51, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(184, 115, 51, 0.1);
+            border: 1px solid rgba(184, 115, 51, 0.3);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--copper);
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--copper);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.1s backwards;
+        }
+
+        .hero-title .copper-text {
+            background: linear-gradient(135deg, var(--copper), var(--gold), var(--copper-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hero-meta-item .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .hero-meta-item .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--copper);
+        }
+
+        .hero-meta-item .value.up {
+            color: var(--success);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--copper);
+            margin-bottom: 16px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--copper);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        /* TLDR Cards */
+        .tldr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .tldr-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tldr-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--copper), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .tldr-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tldr-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--copper);
+        }
+
+        .tldr-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .tldr-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tldr-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .tldr-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            padding: 8px 14px;
+            background: rgba(0, 210, 106, 0.1);
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--success);
+        }
+
+        .tldr-stat.warning {
+            background: rgba(255, 184, 0, 0.1);
+            color: var(--warning);
+        }
+
+        .tldr-stat.danger {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger);
+        }
+
+        /* Key Takeaways */
+        .key-takeaways {
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.1), rgba(255, 215, 0, 0.05));
+            border: 1px solid rgba(184, 115, 51, 0.3);
+            border-radius: 24px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .key-takeaways::before {
+            content: '💡';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 150px;
+            opacity: 0.1;
+        }
+
+        .key-takeaways h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--copper);
+        }
+
+        .takeaway-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .takeaway-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+        }
+
+        .takeaway-item .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--copper);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .takeaway-item p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .takeaway-item strong {
+            color: var(--text-primary);
+        }
+
+        /* Charts Section */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        @media (max-width: 900px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .chart-card:hover {
+            border-color: rgba(184, 115, 51, 0.5);
+        }
+
+        .chart-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .chart-card .chart-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .chart-card canvas {
+            max-height: 300px;
+        }
+
+        .chart-source {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 16px;
+            text-align: right;
+        }
+
+        /* Full Width Chart */
+        .chart-full {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .chart-full h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .chart-full .chart-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .chart-full canvas {
+            max-height: 400px;
+        }
+
+        /* Analysis Content */
+        .analysis-content {
+            margin: 60px 0;
+        }
+
+        .analysis-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .analysis-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .analysis-content ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .analysis-content li {
+            padding: 12px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .analysis-content li:last-child {
+            border-bottom: none;
+        }
+
+        .analysis-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--copper);
+            font-weight: 600;
+        }
+
+        .analysis-content li strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background: rgba(184, 115, 51, 0.1);
+            border-left: 3px solid var(--copper);
+            padding: 20px 24px;
+            margin: 24px 0;
+            font-style: italic;
+            color: var(--text-primary);
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Expert Section */
+        .expert-section {
+            background: var(--bg-secondary);
+        }
+
+        .expert-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            margin-top: 40px;
+            color: var(--copper);
+        }
+
+        .expert-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .expert-text p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-card h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--copper);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-card .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-card .label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .sidebar-card .change {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--success);
+            margin-top: 8px;
+        }
+
+        /* Forecasts Table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+
+        .forecasts-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .forecasts-table th,
+        .forecasts-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .forecasts-table th {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 600;
+            background: var(--bg-card);
+        }
+
+        .forecasts-table td {
+            font-size: 14px;
+        }
+
+        .forecasts-table tr:hover td {
+            background: rgba(184, 115, 51, 0.05);
+        }
+
+        .forecasts-table .bank {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .forecasts-table .price {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--copper);
+            font-weight: 600;
+        }
+
+        .forecasts-table .stance {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .forecasts-table .stance.bullish {
+            background: rgba(0, 210, 106, 0.1);
+            color: var(--success);
+        }
+
+        .forecasts-table .stance.neutral {
+            background: rgba(255, 184, 0, 0.1);
+            color: var(--warning);
+        }
+
+        /* Stocks Section */
+        .stocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .stock-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .stock-card:hover {
+            border-color: var(--copper);
+            transform: translateY(-5px);
+        }
+
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .stock-ticker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--copper);
+        }
+
+        .stock-name {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .stock-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stock-badge.major {
+            background: rgba(184, 115, 51, 0.1);
+            color: var(--copper);
+        }
+
+        .stock-badge.mid {
+            background: rgba(74, 159, 255, 0.1);
+            color: var(--blue);
+        }
+
+        .stock-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stock-stat {
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .stock-stat .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .stock-stat .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .stock-highlights {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Risk Section */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .risk-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .risk-column.bullish h3 {
+            color: var(--success);
+        }
+
+        .risk-column.bearish h3 {
+            color: var(--danger);
+        }
+
+        .risk-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .risk-item:hover {
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .risk-item .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .risk-item .content h4 {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .risk-item .content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Conclusion */
+        .conclusion-section {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .verdict-box {
+            display: inline-block;
+            padding: 60px 80px;
+            background: var(--bg-card);
+            border: 2px solid var(--copper);
+            border-radius: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .verdict-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .verdict-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--copper), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .verdict-text {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--copper);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--copper);
+        }
+
+        .footer-disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Level Visibility */
+        body.show-beginner .level-intermediate,
+        body.show-beginner .level-expert {
+            display: none;
+        }
+
+        body.show-intermediate .level-expert {
+            display: none;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-level { flex-wrap: wrap; }
+            .hero-meta { gap: 24px; }
+            .key-takeaways { padding: 32px; }
+            .verdict-box { padding: 40px 30px; }
+            .verdict-title { font-size: 32px; }
+            .charts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-logo">Crypto Comiks</div>
+            <ul class="nav-links">
+                <li><a href="#summary">Résumé</a></li>
+                <li><a href="#analysis">Analyse</a></li>
+                <li><a href="#expert">Expert</a></li>
+                <li><a href="#stocks">Actions</a></li>
+                <li><a href="#risks">Risques</a></li>
+            </ul>
+            <div class="nav-level">
+                <button class="nav-level-btn" onclick="setLevel('beginner')">🟢 Débutant</button>
+                <button class="nav-level-btn active" onclick="setLevel('all')">📊 Complet</button>
+                <button class="nav-level-btn" onclick="setLevel('expert')">🔬 Expert</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Rapport d'Investissement — Janvier 2026
+            </div>
+            <h1 class="hero-title">
+                <span class="copper-text">CUIVRE</span><br>
+                Le Métal de l'Électrification
+            </h1>
+            <p class="hero-subtitle">
+                Analyse complète du marché, prévisions des grandes banques, et opportunités d'investissement. 
+                Le cuivre est devenu le goulot d'étranglement stratégique de la transition énergétique mondiale.
+            </p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="label">Prix LME</span>
+                    <span class="value">$13,115/t</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Performance 2025</span>
+                    <span class="value up">+40.6%</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Déficit 2026</span>
+                    <span class="value">330-600kt</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Target JP Morgan</span>
+                    <span class="value">$12,500/t</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Summary (Débutants) -->
+    <section id="summary" class="level-beginner" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">🟢 Version Rapide</div>
+                <h2 class="section-title">Ce qu'il faut retenir en 2 minutes</h2>
+                <p class="section-desc">Tu n'as pas le temps ? Voici l'essentiel du rapport condensé pour toi.</p>
+            </div>
+
+            <div class="tldr-grid">
+                <div class="tldr-card reveal">
+                    <div class="tldr-icon">⚡</div>
+                    <h3 class="tldr-title">Pourquoi le cuivre explose</h3>
+                    <p class="tldr-text">L'IA, les data centers, les voitures électriques et les énergies renouvelables ont tous un point commun : ils ont besoin de <strong>tonnes de cuivre</strong>. La demande explose mais les mines ne suivent pas.</p>
+                    <div class="tldr-stat">↑ +40% en 2025</div>
+                </div>
+
+                <div class="tldr-card reveal">
+                    <div class="tldr-icon">🏭</div>
+                    <h3 class="tldr-title">Le problème de l'offre</h3>
+                    <p class="tldr-text">Les plus grandes mines mondiales ont eu des <strong>accidents majeurs</strong> en 2025 (Grasberg, Kamoa-Kakula). Il faut 17 ans en moyenne pour ouvrir une nouvelle mine.</p>
+                    <div class="tldr-stat warning">⚠️ Pénurie structurelle</div>
+                </div>
+
+                <div class="tldr-card reveal">
+                    <div class="tldr-icon">🎯</div>
+                    <h3 class="tldr-title">Ce que disent les banques</h3>
+                    <p class="tldr-text">JP Morgan, Goldman Sachs, UBS, Deutsche Bank... Tous prévoient des prix élevés. Target moyen : <strong>$12,000-13,000/tonne</strong> en 2026.</p>
+                    <div class="tldr-stat">📈 Consensus haussier</div>
+                </div>
+
+                <div class="tldr-card reveal">
+                    <div class="tldr-icon">🌍</div>
+                    <h3 class="tldr-title">La Chine domine tout</h3>
+                    <p class="tldr-text">La Chine consomme <strong>52% du cuivre mondial</strong> et contrôle 40% de la capacité de raffinage. Un ralentissement chinois = risque majeur pour les prix.</p>
+                    <div class="tldr-stat danger">52% de la demande</div>
+                </div>
+            </div>
+
+            <div class="key-takeaways reveal">
+                <h3>💡 Les 5 points clés à retenir</h3>
+                <div class="takeaway-list">
+                    <div class="takeaway-item">
+                        <span class="number">1</span>
+                        <p><strong>Le cuivre est le "nouveau pétrole"</strong> — Essentiel pour l'électrification, l'IA, et la défense. Classé "minéral critique" par les USA en 2025.</p>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="number">2</span>
+                        <p><strong>Déficit structurel à partir de 2026-2027</strong> — La demande va tripler d'ici 2045 selon BloombergNEF, l'offre ne suit pas.</p>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="number">3</span>
+                        <p><strong>Prix record en janvier 2026</strong> — Le cuivre a atteint $13,387/t, son plus haut historique, avant de corriger.</p>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="number">4</span>
+                        <p><strong>Volatilité à prévoir</strong> — Les tarifs américains, la géopolitique et la Chine vont créer des montagnes russes.</p>
+                    </div>
+                    <div class="takeaway-item">
+                        <span class="number">5</span>
+                        <p><strong>Long terme très haussier</strong> — Goldman Sachs voit le cuivre à $15,000/t d'ici 2035.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section id="analysis" class="level-intermediate">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">📊 Analyse de marché</div>
+                <h2 class="section-title">État des lieux du marché du cuivre</h2>
+                <p class="section-desc">Comprendre les dynamiques de l'offre et de la demande pour anticiper les mouvements.</p>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card reveal">
+                    <h4>Demande mondiale par région</h4>
+                    <p class="chart-subtitle">Répartition 2025 — La Chine domine</p>
+                    <canvas id="demandChart"></canvas>
+                    <p class="chart-source">Source: WoodMac, UBS</p>
+                </div>
+
+                <div class="chart-card reveal">
+                    <h4>Production minière par pays</h4>
+                    <p class="chart-subtitle">Top 10 des producteurs 2025</p>
+                    <canvas id="supplyChart"></canvas>
+                    <p class="chart-source">Source: USGS, WoodMac</p>
+                </div>
+            </div>
+
+            <div class="chart-full reveal">
+                <h4>📉 Déficit structurel prévu (2018-2040)</h4>
+                <p class="chart-subtitle">Le déficit s'ouvre à partir de 2027 et pourrait atteindre -12 millions de tonnes d'ici 2040</p>
+                <canvas id="deficitChart"></canvas>
+                <p class="chart-source">Source: Bernstein, Financial Times</p>
+            </div>
+
+            <div class="analysis-content reveal">
+                <h3>📈 Les 4 vecteurs de demande</h3>
+                <p>Selon S&P Global, la demande de cuivre est tirée par quatre forces majeures qui s'accumulent :</p>
+                <ul>
+                    <li><strong>Économie traditionnelle :</strong> Construction, appareils ménagers, infrastructure de base — toujours le plus gros volume</li>
+                    <li><strong>Transition énergétique :</strong> EVs (2.9x plus de cuivre qu'une voiture classique), solaire, éolien, batteries de stockage</li>
+                    <li><strong>Data centers & IA :</strong> 27-33 tonnes de cuivre par MW de capacité installée — en explosion</li>
+                    <li><strong>Défense :</strong> Systèmes d'armes high-tech, électrification du champ de bataille — demande inélastique</li>
+                </ul>
+                <div class="highlight-box">
+                    "En 2025, la moitié de la croissance du PIB américain est attribuée aux dépenses IA — largement sur les puces, les data centers, et les systèmes électriques qui les alimentent." — S&P Global
+                </div>
+            </div>
+
+            <div class="chart-full reveal">
+                <h4>⚖️ Demande vs Offre (2020-2040)</h4>
+                <p class="chart-subtitle">L'écart se creuse significativement après 2030</p>
+                <canvas id="demandSupplyChart"></canvas>
+                <p class="chart-source">Source: S&P Global</p>
+            </div>
+
+            <div class="analysis-content reveal">
+                <h3>⛏️ Les problèmes d'offre</h3>
+                <p>L'offre de cuivre souffre de multiples contraintes structurelles :</p>
+                <ul>
+                    <li><strong>Grasberg (Indonésie) :</strong> Coulée de boue mortelle en sept. 2025, redémarrage partiel en 2026, pleine capacité en 2027</li>
+                    <li><strong>Kamoa-Kakula (RDC) :</strong> Inondation en mai 2025, guidance réduite à 380-420kt pour 2026</li>
+                    <li><strong>Escondida (Chili) :</strong> Plus grande mine mondiale — fermeture temporaire début 2025</li>
+                    <li><strong>El Teniente (Chili) :</strong> Accident en juillet 2025</li>
+                    <li><strong>Délai de développement :</strong> 17 ans en moyenne pour qu'une nouvelle mine produise après sa découverte</li>
+                </ul>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card reveal">
+                    <h4>Réserves mondiales par pays</h4>
+                    <p class="chart-subtitle">En milliers de tonnes — Total: 980Mt</p>
+                    <canvas id="reservesChart"></canvas>
+                    <p class="chart-source">Source: USGS 2024</p>
+                </div>
+
+                <div class="chart-card reveal">
+                    <h4>Demande par secteur (évolution)</h4>
+                    <p class="chart-subtitle">Croissance des nouveaux vecteurs</p>
+                    <canvas id="sectorChart"></canvas>
+                    <p class="chart-source">Source: BloombergNEF, Wood Mackenzie</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Section -->
+    <section id="expert" class="expert-section level-expert">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">🔬 Analyse Expert</div>
+                <h2 class="section-title">Ce que disent les grandes banques</h2>
+                <p class="section-desc">Prévisions détaillées, thèses d'investissement et consensus institutionnel.</p>
+            </div>
+
+            <div class="expert-grid">
+                <div class="expert-text">
+                    <h3>🏦 J.P. Morgan — Target $12,500/t Q2 2026</h3>
+                    <p>J.P. Morgan Global Research maintient une vue très constructive. Gregory Shearer, responsable stratégie métaux, anticipe un déficit de 330,000 tonnes en 2026. La demande data centers pourrait atteindre 475,000 tonnes en 2026, en hausse de ~110,000 tonnes vs 2025.</p>
+
+                    <h3>💎 Goldman Sachs — Vision nuancée</h3>
+                    <p>Goldman a relevé sa prévision H1 2026 à $12,750/t mais reste plus prudent à court terme. La banque prévoit un surplus global de 300,000 tonnes en 2026 et anticipe une correction vers $11,000/t d'ici fin 2026. Long terme: $15,000/t d'ici 2035.</p>
+
+                    <h3>📈 UBS & Deutsche Bank — Bull Case structurel</h3>
+                    <p>UBS voit un "structural bull case unfolding" et a élevé le cuivre au rang de "top pick" parmi les métaux industriels. Target: $13,000/t fin 2026. Deutsche Bank anticipe que l'offre minière ne croîtra que de ~1% en 2026.</p>
+
+                    <h3>⚠️ Bernstein — $11,500/t Q1 2026</h3>
+                    <p>Bernstein identifie une "tempête parfaite": les mines souffrent de "left-skewed output distributions". L'ICSG estime le déficit à 440,000 tonnes. Les data centers hyperscale nécessitent 27-33 tonnes de cuivre par MW.</p>
+
+                    <h3>🌍 BloombergNEF — Déficit 19Mt d'ici 2050</h3>
+                    <p>Le rapport le plus alarmiste. La demande pour la transition énergétique pourrait tripler d'ici 2045. Sans investissements majeurs, le déficit atteindrait 19 millions de tonnes d'ici 2050.</p>
+                </div>
+
+                <div class="expert-sidebar">
+                    <div class="sidebar-card">
+                        <h4>Prix actuel LME</h4>
+                        <div class="value">$13,115</div>
+                        <div class="label">par tonne métrique</div>
+                        <div class="change">↑ +2.82% aujourd'hui</div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4>Record historique</h4>
+                        <div class="value">$13,387</div>
+                        <div class="label">6 janvier 2026</div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4>Stocks COMEX</h4>
+                        <div class="value">503kt</div>
+                        <div class="label">+400% en 12 mois</div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4>Déficit ICSG 2026</h4>
+                        <div class="value">440kt</div>
+                        <div class="label">estimation haute</div>
+                    </div>
+                    <div class="sidebar-card">
+                        <h4>Target long terme GS</h4>
+                        <div class="value">$15,000</div>
+                        <div class="label">d'ici 2035</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-full reveal" style="margin-top: 60px;">
+                <h4>📊 Prévisions des banques pour 2026</h4>
+                <p class="chart-subtitle">Comparaison des targets price institutionnels ($/tonne)</p>
+                <canvas id="forecastsChart"></canvas>
+            </div>
+
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; margin: 60px 0 30px;">Tableau des prévisions institutionnelles</h3>
+
+            <div class="table-wrapper reveal">
+                <table class="forecasts-table">
+                    <thead>
+                        <tr>
+                            <th>Institution</th>
+                            <th>Target 2026</th>
+                            <th>Horizon</th>
+                            <th>Stance</th>
+                            <th>Thèse principale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="bank">J.P. Morgan</td>
+                            <td class="price">$12,500/t</td>
+                            <td>Q2 2026</td>
+                            <td><span class="stance bullish">Bullish</span></td>
+                            <td>Déficit 330kt, data centers, disruptions</td>
+                        </tr>
+                        <tr>
+                            <td class="bank">Goldman Sachs</td>
+                            <td class="price">$12,750 → $11,000/t</td>
+                            <td>H1 → Q4 2026</td>
+                            <td><span class="stance neutral">Neutre</span></td>
+                            <td>Rally tardif, surplus 300kt attendu</td>
+                        </tr>
+                        <tr>
+                            <td class="bank">UBS</td>
+                            <td class="price">$13,000/t</td>
+                            <td>Fin 2026</td>
+                            <td><span class="stance bullish">Bullish</span></td>
+                            <td>Bull case structurel, top pick</td>
+                        </tr>
+                        <tr>
+                            <td class="bank">Bank of America</td>
+                            <td class="price">$11,313/t</td>
+                            <td>2026 avg</td>
+                            <td><span class="stance bullish">Bullish</span></td>
+                            <td>Supply squeeze, low TC/RCs</td>
+                        </tr>
+                        <tr>
+                            <td class="bank">Deutsche Bank</td>
+                            <td class="price">Peak H1</td>
+                            <td>H1 2026</td>
+                            <td><span class="stance bullish">Bullish</span></td>
+                            <td>Offre faible, recovery mid-2026</td>
+                        </tr>
+                        <tr>
+                            <td class="bank">Citi</td>
+                            <td class="price">$13,000/t</td>
+                            <td>Early 2026</td>
+                            <td><span class="stance bullish">Bullish</span></td>
+                            <td>Hoarding US, tariff fears</td>
+                        </tr>
+                        <tr>
+                            <td class="bank">Bernstein</td>
+                            <td class="price">$11,500/t</td>
+                            <td>Q1 2026</td>
+                            <td><span class="stance bullish">Bullish</span></td>
+                            <td>AI data centers, supply shocks</td>
+                        </tr>
+                        <tr>
+                            <td class="bank">ING</td>
+                            <td class="price">Déficit 600kt</td>
+                            <td>2026</td>
+                            <td><span class="stance bullish">Bullish</span></td>
+                            <td>Tariff risk, tight ex-US supply</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stocks Section -->
+    <section id="stocks" class="level-intermediate">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">🏦 Actions à suivre</div>
+                <h2 class="section-title">Les meilleures actions cuivre</h2>
+                <p class="section-desc">Les producteurs majeurs et mid-caps à surveiller pour s'exposer au cuivre.</p>
+            </div>
+
+            <div class="stocks-grid">
+                <div class="stock-card reveal">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-ticker">FCX</div>
+                            <div class="stock-name">Freeport-McMoRan</div>
+                        </div>
+                        <span class="stock-badge major">Major</span>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stock-stat"><div class="label">Market Cap</div><div class="value">$68B</div></div>
+                        <div class="stock-stat"><div class="label">P/E</div><div class="value">33.1x</div></div>
+                        <div class="stock-stat"><div class="label">Production</div><div class="value">1.26Mt</div></div>
+                        <div class="stock-stat"><div class="label">Dividende</div><div class="value">1.27%</div></div>
+                    </div>
+                    <p class="stock-highlights">🏆 N°1 mondial coté. Grasberg (Indonésie), Cerro Verde (Pérou), Morenci (USA). Recovery Grasberg prévue 2026-2027.</p>
+                </div>
+
+                <div class="stock-card reveal">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-ticker">BHP</div>
+                            <div class="stock-name">BHP Group</div>
+                        </div>
+                        <span class="stock-badge major">Major</span>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stock-stat"><div class="label">Market Cap</div><div class="value">$153B</div></div>
+                        <div class="stock-stat"><div class="label">P/E</div><div class="value">16.8x</div></div>
+                        <div class="stock-stat"><div class="label">Production</div><div class="value">~1.5Mt</div></div>
+                        <div class="stock-stat"><div class="label">Dividende</div><div class="value">3.69%</div></div>
+                    </div>
+                    <p class="stock-highlights">🇨🇱 Opère Escondida (plus grande mine mondiale). $10-14Mds d'expansions prévues. Diversifié fer/nickel.</p>
+                </div>
+
+                <div class="stock-card reveal">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-ticker">SCCO</div>
+                            <div class="stock-name">Southern Copper</div>
+                        </div>
+                        <span class="stock-badge major">Major</span>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stock-stat"><div class="label">Market Cap</div><div class="value">$117B</div></div>
+                        <div class="stock-stat"><div class="label">Marge</div><div class="value">51%</div></div>
+                        <div class="stock-stat"><div class="label">Expansion</div><div class="value">+500kt</div></div>
+                        <div class="stock-stat"><div class="label">Dividende</div><div class="value">2.53%</div></div>
+                    </div>
+                    <p class="stock-highlights">💰 Coûts les plus bas du secteur. Pérou/Mexique. +156kt d'ici 2027, +500kt d'ici 2032.</p>
+                </div>
+
+                <div class="stock-card reveal">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-ticker">RIO</div>
+                            <div class="stock-name">Rio Tinto</div>
+                        </div>
+                        <span class="stock-badge major">Major</span>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stock-stat"><div class="label">Market Cap</div><div class="value">$120B+</div></div>
+                        <div class="stock-stat"><div class="label">P/E</div><div class="value">12.0x</div></div>
+                        <div class="stock-stat"><div class="label">Projets</div><div class="value">3+</div></div>
+                        <div class="stock-stat"><div class="label">Dividende</div><div class="value">~5%</div></div>
+                    </div>
+                    <p class="stock-highlights">🇲🇳 Oyu Tolgoi (Mongolie) en ramp-up. Kennecott (USA), Winu (Australie). P/E attractif.</p>
+                </div>
+
+                <div class="stock-card reveal">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-ticker">TECK</div>
+                            <div class="stock-name">Teck Resources</div>
+                        </div>
+                        <span class="stock-badge mid">Mid-Cap</span>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stock-stat"><div class="label">Market Cap</div><div class="value">$21B</div></div>
+                        <div class="stock-stat"><div class="label">P/E</div><div class="value">24.3x</div></div>
+                        <div class="stock-stat"><div class="label">QB2</div><div class="value">316kt/an</div></div>
+                        <div class="stock-stat"><div class="label">2030</div><div class="value">800kt</div></div>
+                    </div>
+                    <p class="stock-highlights">🔄 Fusion avec Anglo American → "Anglo Teck". Pure-play cuivre post vente charbon.</p>
+                </div>
+
+                <div class="stock-card reveal">
+                    <div class="stock-header">
+                        <div>
+                            <div class="stock-ticker">IVN</div>
+                            <div class="stock-name">Ivanhoe Mines</div>
+                        </div>
+                        <span class="stock-badge mid">Mid-Cap</span>
+                    </div>
+                    <div class="stock-stats">
+                        <div class="stock-stat"><div class="label">Mine</div><div class="value">Kamoa</div></div>
+                        <div class="stock-stat"><div class="label">2026</div><div class="value">380-420kt</div></div>
+                        <div class="stock-stat"><div class="label">2027</div><div class="value">500-540kt</div></div>
+                        <div class="stock-stat"><div class="label">Smelter</div><div class="value">$700M</div></div>
+                    </div>
+                    <p class="stock-highlights">🏗️ Nouvelle fonderie $700M (plus grande d'Afrique). High risk / high reward.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border);" class="reveal">
+                <p style="color: var(--text-secondary); font-size: 15px;">
+                    <strong style="color: var(--copper);">💡 ETFs alternatifs :</strong> 
+                    Pour une exposition diversifiée : <strong>Global X Copper Miners ETF (COPX)</strong> ou <strong>United States Copper Index Fund (CPER)</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Section -->
+    <section id="risks" class="level-intermediate" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">⚠️ Risques & Opportunités</div>
+                <h2 class="section-title">Les deux côtés de la médaille</h2>
+                <p class="section-desc">Comprendre les catalyseurs haussiers et les risques baissiers.</p>
+            </div>
+
+            <div class="risk-grid">
+                <div class="risk-column bullish">
+                    <h3>🟢 Catalyseurs haussiers</h3>
+                    <div class="risk-item reveal"><div class="icon">🤖</div><div class="content"><h4>Boom de l'IA et des data centers</h4><p>475kt de demande en 2026. Chaque MW = 27-33 tonnes de cuivre.</p></div></div>
+                    <div class="risk-item reveal"><div class="icon">🚗</div><div class="content"><h4>Électrification des transports</h4><p>Un EV utilise 2.9x plus de cuivre. Adoption en accélération.</p></div></div>
+                    <div class="risk-item reveal"><div class="icon">⚡</div><div class="content"><h4>Expansion des réseaux électriques</h4><p>90% des nouvelles capacités = solaire/éolien. Grid upgrades massifs.</p></div></div>
+                    <div class="risk-item reveal"><div class="icon">⛏️</div><div class="content"><h4>Contraintes d'offre structurelles</h4><p>17 ans pour ouvrir une mine. Baisse des grades. Sous-investissement.</p></div></div>
+                </div>
+
+                <div class="risk-column bearish">
+                    <h3>🔴 Risques baissiers</h3>
+                    <div class="risk-item reveal"><div class="icon">🇨🇳</div><div class="content"><h4>Ralentissement chinois</h4><p>Chine = 52% de la demande. Immobilier en crise. Traders chinois short.</p></div></div>
+                    <div class="risk-item reveal"><div class="icon">📦</div><div class="content"><h4>Stocks US gonflés</h4><p>COMEX à 503kt (+400% en 12 mois). Risque de reflux si pas de tarifs.</p></div></div>
+                    <div class="risk-item reveal"><div class="icon">💱</div><div class="content"><h4>Volatilité tarifs/politique</h4><p>Trump menace des tarifs 15%. Annonce ou report = mouvements violents.</p></div></div>
+                    <div class="risk-item reveal"><div class="icon">🔄</div><div class="content"><h4>Substitution aluminium</h4><p>Prix élevés accélèrent la substitution dans certaines applications.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="conclusion-section">
+        <div class="container">
+            <div class="verdict-box reveal">
+                <div class="verdict-label">Notre verdict</div>
+                <h2 class="verdict-title">BULLISH Long Terme</h2>
+                <p class="verdict-text">Le cuivre est le métal de l'électrification. Court terme volatil, mais le déficit structurel à partir de 2026-2027 soutient une thèse haussière solide. Exposition recommandée via majors diversifiés.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Crypto <span>Comiks</span></div>
+            <div class="footer-links">
+                <a href="#">📸 @crypto_comiks</a>
+                <a href="#">🐦 @crypto_comiks</a>
+                <a href="#">📱 Telegram</a>
+                <a href="#">🎵 @crypto_comics</a>
+            </div>
+            <p class="footer-disclaimer">Ce contenu est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures. DYOR.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Level switching
+        function setLevel(level) {
+            document.body.classList.remove('show-beginner', 'show-intermediate');
+            document.querySelectorAll('.nav-level-btn').forEach(btn => btn.classList.remove('active'));
+            if (level === 'beginner') document.body.classList.add('show-beginner');
+            event.target.classList.add('active');
+        }
+
+        // Chart defaults
+        Chart.defaults.color = '#B0B0B0';
+        Chart.defaults.borderColor = '#2A2A2A';
+
+        // 1. Demand Chart
+        new Chart(document.getElementById('demandChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Chine 52%', 'Europe 15%', 'Autre Asie 13%', 'Amérique Nord 9%', 'Autre 7%', 'Moyen-Orient 3%', 'LATAM 1%'],
+                datasets: [{ data: [52, 15, 13, 9, 7, 3, 1], backgroundColor: ['#B87333', '#D4956A', '#8B4513', '#FFD700', '#4A9FFF', '#00D26A', '#A855F7'], borderWidth: 0, hoverOffset: 15 }]
+            },
+            options: { cutout: '55%', plugins: { legend: { position: 'bottom', labels: { padding: 12, font: { size: 11 } } } } }
+        });
+
+        // 2. Supply Chart
+        new Chart(document.getElementById('supplyChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Chili', 'RDC', 'Pérou', 'Chine', 'USA', 'Russie', 'Zambie', 'Mexique', 'Kazakhstan', 'Australie'],
+                datasets: [{ label: '%', data: [23, 14, 12, 8, 5, 5, 4, 3, 3, 3], backgroundColor: '#B87333', borderRadius: 4 }]
+            },
+            options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { grid: { color: '#2A2A2A' }, max: 25 }, y: { grid: { display: false } } } }
+        });
+
+        // 3. Deficit Chart
+        new Chart(document.getElementById('deficitChart'), {
+            type: 'bar',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2032', '2035', '2038', '2040'],
+                datasets: [{ label: 'Balance (Mt)', data: [0.5, 0.3, -0.2, 0.1, 0.2, 0.1, 0, -0.3, -0.8, -1.5, -2.5, -3.5, -4.5, -6.5, -9, -11, -12], backgroundColor: ctx => ctx.raw >= 0 ? '#00D26A' : '#FF4757', borderRadius: 4 }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#2A2A2A' }, title: { display: true, text: 'Millions de tonnes' } }, x: { grid: { display: false } } } }
+        });
+
+        // 4. Demand vs Supply
+        new Chart(document.getElementById('demandSupplyChart'), {
+            type: 'line',
+            data: {
+                labels: ['2020', '2022', '2024', '2026', '2028', '2030', '2032', '2035', '2038', '2040'],
+                datasets: [
+                    { label: 'Demande', data: [24, 26, 28, 30, 33, 36, 38, 40, 41, 42], borderColor: '#4A9FFF', backgroundColor: 'rgba(74,159,255,0.1)', fill: true, tension: 0.3, borderWidth: 3 },
+                    { label: 'Offre', data: [24, 26, 27, 28, 30, 32, 33, 33, 32, 32], borderColor: '#FF4757', backgroundColor: 'rgba(255,71,87,0.1)', fill: true, tension: 0.3, borderWidth: 3 }
+                ]
+            },
+            options: { plugins: { legend: { position: 'top' } }, scales: { y: { grid: { color: '#2A2A2A' }, title: { display: true, text: 'Millions de tonnes' }, min: 20, max: 45 }, x: { grid: { display: false } } } }
+        });
+
+        // 5. Reserves Chart
+        new Chart(document.getElementById('reservesChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Chili 190Mt', 'Australie 100Mt', 'Pérou 100Mt', 'Russie 80Mt', 'RDC 80Mt', 'USA 47Mt', 'Chine 41Mt', 'Autres 342Mt'],
+                datasets: [{ data: [190, 100, 100, 80, 80, 47, 41, 342], backgroundColor: ['#B87333', '#D4956A', '#8B4513', '#FFD700', '#4A9FFF', '#00D26A', '#A855F7', '#707070'], borderWidth: 0 }]
+            },
+            options: { cutout: '55%', plugins: { legend: { position: 'bottom', labels: { padding: 10, font: { size: 10 } } } } }
+        });
+
+        // 6. Sector Chart
+        new Chart(document.getElementById('sectorChart'), {
+            type: 'bar',
+            data: {
+                labels: ['2020', '2025', '2030', '2035', '2040'],
+                datasets: [
+                    { label: 'Traditionnel', data: [20, 21, 22, 23, 24], backgroundColor: '#707070' },
+                    { label: 'EVs & Batteries', data: [1, 3, 6, 8, 10], backgroundColor: '#00D26A' },
+                    { label: 'Renouvelables', data: [2, 3, 4, 5, 5], backgroundColor: '#4A9FFF' },
+                    { label: 'Data Centers / IA', data: [0.2, 0.5, 1.5, 2.5, 3], backgroundColor: '#A855F7' }
+                ]
+            },
+            options: { plugins: { legend: { position: 'bottom', labels: { padding: 15 } } }, scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, grid: { color: '#2A2A2A' }, title: { display: true, text: 'Mt' } } } }
+        });
+
+        // 7. Forecasts Chart
+        new Chart(document.getElementById('forecastsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['UBS', 'Citi', 'J.P. Morgan', 'Goldman (H1)', 'Bernstein', 'Bank of America', 'Goldman (Q4)'],
+                datasets: [{ label: 'Target $/t', data: [13000, 13000, 12500, 12750, 11500, 11313, 11000], backgroundColor: ctx => ctx.raw >= 12500 ? '#00D26A' : ctx.raw >= 11500 ? '#FFB800' : '#FF4757', borderRadius: 6 }]
+            },
+            options: { indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { grid: { color: '#2A2A2A' }, min: 10000, max: 14000, ticks: { callback: val => `$${(val/1000).toFixed(0)}k` } }, y: { grid: { display: false } } } }
+        });
+
+        // Scroll reveal
+        function reveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add('active');
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+</html>
