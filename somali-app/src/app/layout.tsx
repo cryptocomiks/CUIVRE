@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { BottomNav } from '@/components/BottomNav'
+import { ThemeInit } from '@/components/ThemeInit'
 
 export const metadata: Metadata = {
   title: 'Af Soomaali',
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="fr" data-theme="dark">
       <body className="min-h-dvh bg-bg text-text antialiased">
+        <ThemeInit />
         <main className="mx-auto w-full max-w-xl px-4 pb-28 pt-4">{children}</main>
         <BottomNav />
       </body>

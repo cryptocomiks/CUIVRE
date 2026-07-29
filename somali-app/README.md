@@ -7,8 +7,13 @@ Tout est stocké dans le navigateur (IndexedDB). Aucun backend, aucun compte, au
 dépendance payante. L'application est conçue pour que **vous alimentiez vous-même le
 contenu audio** à partir d'enregistrements de proches locuteurs natifs.
 
-> **État actuel : phase 1 livrée** (socle technique). Les phases 2 à 5 sont décrites
-> plus bas.
+> **État actuel : phases 1 et 2 livrées** — socle technique, session de révision
+> (3 modes), répertoire, réglages FSRS et import JSON. Les phases 3 à 5 sont
+> décrites plus bas.
+
+> **Astuce VPS / performances** : `npm run dev` compile chaque page à la volée et
+> paraît lent. Pour un usage réel, servez le build de production :
+> `npm run build && npm start -- -p 3001`.
 
 ---
 
@@ -172,8 +177,9 @@ phrase.
   sont ignorés — un même fichier peut donc être réimporté sans risque.
 - Chaque phrase importée crée automatiquement ses trois cartes de révision.
 
-> L'écran d'import arrive en phase 2. La fonction sous-jacente
-> (`importEntries` dans `src/lib/db/repo.ts`) est déjà écrite et testée.
+**En pratique** : Réglages → « Import en masse (JSON) » → choisir le fichier. Le
+rapport d'import s'affiche à l'écran, ligne par ligne. On peut aussi ajouter les
+phrases une à une depuis l'écran Ereyada (« + Ajouter une phrase »).
 
 ---
 
@@ -243,20 +249,38 @@ d'instructions pas-à-pas, et export/import complet de la base en JSON.
 | Phase | Contenu | État |
 | --- | --- | --- |
 | 1 | Scaffold, modèle Dexie, moteur FSRS + tests | **livrée** |
-| 2 | Session de révision (3 modes), répertoire, réglages, import JSON | à venir |
+| 2 | Session de révision (3 modes), répertoire, réglages, import JSON | **livrée** |
 | 3 | Enregistrement, import audio, découpage, module Dhawaaq | à venir |
 | 4 | Export Anki (CSV + ZIP), sauvegarde JSON | à venir |
 | 5 | PWA hors ligne, installable, jeu de 30 phrases de départ | à venir |
 
-### Couverture des tests (phase 1)
+### Ce que couvre la phase 2
 
-89 tests, sur le moteur SRS et la couche de données :
+- **Session de révision** (`/reviser`) : les trois modes alternés, aperçu des quatre
+  intervalles sur les boutons de note, annulation de la dernière note, remise en
+  file des cartes en palier court, badge sur les phrases non vérifiées. Une carte
+  « écoute pure » n'apparaît que si sa phrase a de l'audio.
+- **Répertoire** (`/repertoire`) : recherche instantanée somali/français (accents
+  ignorés), filtres thème/niveau/statut, favoris, validation par locuteur natif
+  (nom mémorisé), ajout manuel avec contrôle d'orthographe, suppression en cascade.
+- **Réglages** (`/reglages`) : plafonds quotidiens, modes actifs, rétention visée,
+  **rétro-calcul global**, import JSON avec rapport détaillé, thème sombre/clair.
+
+### Couverture des tests
+
+97 tests Vitest sur le moteur SRS et la couche de données :
 
 - `src/lib/srs/engine.test.ts` — notation, paliers, oublis, annulation, oubli forcé,
   rétention, rétro-calcul, formatage des intervalles ;
 - `src/lib/srs/queue.test.ts` — plafonds, tri par échéance, modes, espacement des
   cartes sœurs, prévision de charge ;
+- `src/lib/srs/session.test.ts` — filtrage des cartes « écoute » sans audio,
+  plafond quotidien à cheval sur plusieurs sessions, annulation de révision ;
 - `src/lib/db/repo.test.ts` — CRUD, cascade de suppression, recherche, import en
   masse et ses rejets, enregistrement des révisions ;
 - `src/lib/content/somali.test.ts` — digrammes, voyelles longues, alphabet ;
 - `src/lib/date.test.ts` — jours et séries.
+
+S'y ajoute un scénario navigateur complet (Playwright, non commité) exécuté à
+chaque phase : ajout, recherche, validation, session entière, annulation, import
+JSON, rétro-calcul, bascule de thème.

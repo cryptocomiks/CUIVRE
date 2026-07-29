@@ -51,17 +51,17 @@ export default function DashboardPage() {
         </dl>
         {!loading && stats.entries === 0 && (
           <p className="mt-3 text-sm text-muted">
-            Base vide. Le jeu de départ et l’import de contenu arrivent aux phases
-            suivantes.
+            Base vide. Ajoutez des phrases depuis « Ereyada », ou importez un fichier
+            JSON depuis les réglages. Le jeu de 30 phrases de départ arrive en phase 5.
           </p>
         )}
       </section>
 
       <section className="rounded-xl border border-warn/40 bg-warn/5 p-4 text-sm">
-        <p className="font-semibold text-warn">Phase 1 — socle technique</p>
+        <p className="font-semibold text-warn">Phase 2 — révision et répertoire</p>
         <p className="mt-1 text-muted">
-          Modèle de données, moteur FSRS et file de révision sont en place et testés.
-          Les écrans de session, d’audio et d’export suivent.
+          Session de révision (3 modes), répertoire avec recherche et validation,
+          réglages FSRS et import JSON sont actifs. Audio et prononciation en phase 3.
         </p>
       </section>
     </div>

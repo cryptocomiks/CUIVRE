@@ -357,17 +357,18 @@ export async function importEntries(
 /**
  * Enregistre le résultat d'une révision : carte mise à jour, ligne de journal
  * et compteurs du jour, le tout dans une seule transaction.
+ * Renvoie la clé de la ligne de journal, nécessaire pour l'annulation.
  */
 export async function recordReview(
   card: Card,
   log: ReviewLogEntry,
   wasNew: boolean,
   db: SomaliDB = getDb(),
-): Promise<void> {
+): Promise<number> {
   const key = dayKey(log.review)
-  await db.transaction('rw', db.cards, db.reviewLogs, db.dailyStats, async () => {
+  return db.transaction('rw', db.cards, db.reviewLogs, db.dailyStats, async () => {
     await db.cards.put(card)
-    await db.reviewLogs.add(log)
+    const seq = await db.reviewLogs.add(log)
     const stat = (await db.dailyStats.get(key)) ?? emptyDailyStat(key)
     stat.reviews += 1
     if (wasNew) stat.newCards += 1
@@ -375,6 +376,34 @@ export async function recordReview(
     else stat.correct += 1
     stat.studyMs += log.durationMs ?? 0
     await db.dailyStats.put(stat)
+    return seq
+  })
+}
+
+/**
+ * Annule la dernière révision d'une carte : restaure l'état antérieur,
+ * supprime la ligne de journal et décrémente les compteurs du jour.
+ */
+export async function undoReview(
+  prevCard: Card,
+  seq: number,
+  log: ReviewLogEntry,
+  wasNew: boolean,
+  db: SomaliDB = getDb(),
+): Promise<void> {
+  const key = dayKey(log.review)
+  await db.transaction('rw', db.cards, db.reviewLogs, db.dailyStats, async () => {
+    await db.cards.put(prevCard)
+    await db.reviewLogs.delete(seq)
+    const stat = await db.dailyStats.get(key)
+    if (stat) {
+      stat.reviews = Math.max(0, stat.reviews - 1)
+      if (wasNew) stat.newCards = Math.max(0, stat.newCards - 1)
+      if (log.rating === 1) stat.again = Math.max(0, stat.again - 1)
+      else stat.correct = Math.max(0, stat.correct - 1)
+      stat.studyMs = Math.max(0, stat.studyMs - (log.durationMs ?? 0))
+      await db.dailyStats.put(stat)
+    }
   })
 }
 

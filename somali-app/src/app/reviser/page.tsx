@@ -1,11 +1,10 @@
-import { Placeholder } from '@/components/Placeholder'
+import { ReviewSession } from '@/components/ReviewSession'
 
 export default function ReviserPage() {
   return (
-    <Placeholder
-      title="Xasuus — session de révision"
-      phase="Phase 2"
-      detail="Reconnaissance, production et écoute pure, une carte à la fois, utilisable à une main."
-    />
+    <div className="flex flex-col gap-2">
+      <h1 className="text-xl font-semibold">Xasuus</h1>
+      <ReviewSession />
+    </div>
   )
 }
