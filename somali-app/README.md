@@ -221,6 +221,55 @@ cartes issues de la même phrase (sinon la seconde se répondrait toute seule).
 
 ---
 
+## Audio gratuit — état réel des sources (vérifié le 29/07/2026)
+
+L'application est faite pour recevoir des enregistrements de proches, mais on
+peut la peupler d'audio somali **gratuit** en attendant. État des lieux, vérifié
+source par source :
+
+| Source | Somali ? | Licence | Verdict |
+| --- | --- | --- | --- |
+| **50languages / book2** (Goethe-Verlag) | probable mais **à confirmer** (absent de leur catalogue historique ; le script ci-dessous le vérifie) | CC BY-NC-ND 3.0 | **Meilleure piste** : ~1 800 phrases du quotidien, un MP3 par phrase, paires FR↔SO |
+| **DLI Language Survival Kit** (Defense Language Institute, USA) | **oui, certain** | Domaine public (production du gouvernement américain) | Très bon plan B : phrases pratiques avec MP3 par phrase, livret PDF avec transcriptions ; téléchargement sur `fieldsupport.dliflc.edu` ou `101languages.net/somali` |
+| **Tatoeba** | ~2 000 phrases texte, mais quasi **aucun audio** somali | CC BY / CC0 | Inutilisable pour l'audio |
+| **Mozilla Common Voice** | pas de corpus somali | — | Inutilisable |
+| **Lingua Libre / Wikimedia Commons** | une poignée de mots isolés au mieux | CC BY-SA | Marginal (mots isolés, pas de phrases) |
+| **Forvo** | mots isolés | licence restrictive, API payante | Écarté |
+
+### Générer le pack de départ (50languages)
+
+Sur une machine avec internet ouvert (votre VPS ou votre ordinateur — pas un
+déploiement) :
+
+```bash
+cd somali-app
+npm run fetch-pack -- --probe    # 1. vérifie si le somali existe chez 50languages
+npm run fetch-pack               # 2. télécharge ~30 phrases + audio
+```
+
+Le script écrit `public/starter/pack.json` + les MP3. Ensuite, dans
+l'application : **Réglages → « Charger le pack de départ »**. L'import est
+idempotent (pas de doublons), tout arrive **non vérifié**, et l'audio est rangé
+dans IndexedDB — utilisable hors ligne ensuite.
+
+Options : `--lessons 2,3,7,12,20` (leçons book2 à prendre), `--per-lesson 6`,
+`--max 30`, `--debug` (sauvegarde les pages brutes si l'analyse échoue).
+
+⚠ **Licence 50languages : CC BY-NC-ND 3.0.** Usage personnel et partage non
+commercial avec attribution uniquement. Le dossier `public/starter/` est exclu
+de git par défaut — ne le committez pas dans un dépôt public.
+
+### Plan B : le kit DLI (domaine public)
+
+Si le somali n'est pas chez 50languages, le **Somali Language Survival Kit** du
+DLI est certain d'exister et **librement redistribuable** (domaine public) :
+téléchargez le ZIP audio + le livret PDF, puis construisez un
+`public/starter/pack.json` à la main sur le même format (voir
+`src/lib/content/pack.ts`), ou importez les MP3 un à un depuis l'interface
+(phase 3). Les traductions du livret sont en anglais : traduisez le sens en
+français, la phrase somalie elle-même vient du livret — ne la retapez pas de
+mémoire.
+
 ## Synthèse vocale (TTS) — état réel
 
 **À compléter en phase 3.** L'état réel du support du somali chez les différents

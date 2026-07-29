@@ -7,6 +7,7 @@ import { getDb } from '@/lib/db/db'
 import { getSettings, historyFor, saveSettings } from '@/lib/db/repo'
 import { buildScheduler, recomputeCard } from '@/lib/srs/engine'
 import { ImportJson } from '@/components/ImportJson'
+import { StarterPackCard } from '@/components/StarterPack'
 
 export default function ReglagesPage() {
   const [settings, setSettings] = useState<Settings | null>(null)
@@ -178,6 +179,7 @@ export default function ReglagesPage() {
       </section>
 
       {/* --- Contenu -------------------------------------------------- */}
+      <StarterPackCard />
       <ImportJson />
 
       <section className="rounded-xl border border-border bg-surface p-4 text-sm text-muted">

@@ -10,3 +10,7 @@ next-env.d.ts
 .DS_Store
 public/sw.js
 public/workbox-*.js
+
+# Pack de départ généré par scripts/fetch-50languages.mjs.
+# Contenu CC BY-NC-ND (50languages) : ne pas redistribuer via un dépôt public.
+public/starter/

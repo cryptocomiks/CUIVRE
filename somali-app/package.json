@@ -10,7 +10,8 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "fetch-pack": "node scripts/fetch-50languages.mjs"
   },
   "dependencies": {
     "dexie": "^4.4.4",
