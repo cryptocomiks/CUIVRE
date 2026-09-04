@@ -1,0 +1,2894 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLARITY Act 2026 — Le Rapport Complet | Crypto Comiks</title>
+    <meta name="description" content="Le rapport de référence sur le CLARITY Act : 148 pages d'analyse sur la loi qui redéfinit la régulation crypto aux États-Unis. Ce qui change pour tes actifs, secteur par secteur.">
+    <meta property="og:title" content="CLARITY Act 2026 — Le Rapport Complet">
+    <meta property="og:description" content="148 pages pour comprendre la loi qui redéfinit la crypto aux États-Unis. SEC vs CFTC, tokens concernés, calendrier d'application.">
+    <meta property="og:image" content="assets/clarity-act-capitol.jpg">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            /* Marque Crypto Comiks — hérité de index.html */
+            --copper: #B87333;
+            --copper-light: #D4956A;
+            --copper-dark: #8B4513;
+            --gold: #FFD700;
+
+            /* Univers sombre (hero, pricing, footer) */
+            --bg-primary: #0D0D0D;
+            --bg-secondary: #141414;
+            --bg-card: #1A1A1A;
+            --bg-card-hover: #222222;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --text-muted: #707070;
+            --border: #2A2A2A;
+
+            /* Univers papier (corps éditorial) */
+            --paper: #F2EEE4;
+            --paper-deep: #E8E2D4;
+            --paper-card: #FBF9F4;
+            --ink: #14110E;
+            --ink-soft: #45403A;
+            --ink-muted: #7C746A;
+            --rule: #14110E;
+            --rule-soft: #C9C0AE;
+
+            --success: #00D26A;
+            --warning: #FFB800;
+            --danger: #FF4757;
+            --blue: #4A9FFF;
+            --purple: #A855F7;
+
+            --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Grain global — signature visuelle du site */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container-narrow { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+        a { color: inherit; }
+
+        /* ============ NAVIGATION ============ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--copper);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--copper); }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 100px;
+            background: var(--copper);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--sans);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: var(--copper-light);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(184, 115, 51, 0.35);
+        }
+
+        /* ============ HERO — SOMBRE / CINÉMA ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 130px 0 64px;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/congress-floor.jpg');
+            background-size: cover;
+            background-position: center 35%;
+            filter: grayscale(0.55) contrast(1.1) brightness(0.42);
+            transform: scale(1.06);
+            z-index: -3;
+        }
+
+        /* Dégradés : lisibilité du texte + raccord avec la section papier */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 25% 45%, rgba(184, 115, 51, 0.20), transparent 55%),
+                linear-gradient(180deg, rgba(13,13,13,0.94) 0%, rgba(13,13,13,0.72) 35%, rgba(13,13,13,0.88) 78%, var(--bg-primary) 100%);
+            z-index: -2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(184, 115, 51, 0.45);
+            background: rgba(184, 115, 51, 0.10);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--copper-light);
+            margin-bottom: 28px;
+            backdrop-filter: blur(8px);
+        }
+
+        .pulse {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 0 0 rgba(0, 210, 106, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%   { box-shadow: 0 0 0 0 rgba(0, 210, 106, 0.7); }
+            70%  { box-shadow: 0 0 0 10px rgba(0, 210, 106, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 210, 106, 0); }
+        }
+
+        .hero-kicker {
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-family: var(--serif);
+            font-size: clamp(44px, 8.4vw, 104px);
+            font-weight: 900;
+            line-height: 0.94;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            max-width: 16ch;
+        }
+
+        .copper-text {
+            background: linear-gradient(135deg, var(--copper-light), var(--copper), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(17px, 2.1vw, 21px);
+            color: var(--text-secondary);
+            max-width: 62ch;
+            margin-bottom: 34px;
+        }
+
+        .hero-subtitle strong { color: var(--text-primary); font-weight: 600; }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 56px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 17px 32px;
+            border-radius: 100px;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--copper), var(--copper-dark));
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(184, 115, 51, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(184, 115, 51, 0.45);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.22);
+            color: #fff;
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--copper);
+            transform: translateY(-2px);
+        }
+
+        .btn-free-tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: var(--success);
+            color: #04240F;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 26px 48px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+        .hero-meta-item .label {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .hero-meta-item .value {
+            font-family: var(--mono);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .hero-meta-item .value.up { color: var(--success); }
+        .hero-meta-item .value.copper { color: var(--copper-light); }
+
+        /* ============ TICKER DÉFILANT ============ */
+        .ticker {
+            background: var(--copper);
+            color: #1A0F04;
+            padding: 13px 0;
+            overflow: hidden;
+            position: relative;
+            border-top: 1px solid rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(0,0,0,0.15);
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 44px;
+            width: max-content;
+            animation: ticker-scroll 42s linear infinite;
+        }
+
+        .ticker:hover .ticker-track { animation-play-state: paused; }
+
+        @keyframes ticker-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .ticker-item b { font-weight: 700; }
+        .ticker-item .dot { opacity: 0.45; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none; }
+        }
+
+        /* ============ ZONE PAPIER ============ */
+        .paper {
+            background: var(--paper);
+            color: var(--ink);
+            position: relative;
+        }
+
+        /* Texture fibre du papier */
+        .paper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(0deg, rgba(20,17,14,0.018) 0 1px, transparent 1px 3px),
+                radial-gradient(circle at 15% 20%, rgba(184,115,51,0.05), transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(184,115,51,0.04), transparent 45%);
+            pointer-events: none;
+        }
+
+        .paper > * { position: relative; z-index: 1; }
+
+        .paper section { padding: 90px 0; }
+
+        /* --- Manchette / bandeau de titre de journal --- */
+        .masthead {
+            padding: 56px 0 0;
+            text-align: center;
+        }
+
+        .masthead-rules {
+            border-top: 3px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 4px 0;
+        }
+
+        .masthead-title {
+            font-family: var(--serif);
+            font-size: clamp(30px, 6.4vw, 62px);
+            font-weight: 900;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            line-height: 1.05;
+            padding: 16px 0 10px;
+        }
+
+        .masthead-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 22px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            border-top: 1px solid var(--rule);
+            padding: 10px 0;
+        }
+
+        .masthead-meta .sep { color: var(--rule-soft); }
+
+        /* --- Une : gros titre + chapeau en colonnes --- */
+        .front-page { padding-top: 52px; }
+
+        .front-headline {
+            font-family: var(--serif);
+            font-size: clamp(38px, 6.6vw, 76px);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -0.022em;
+            text-align: center;
+            max-width: 20ch;
+            margin: 0 auto 20px;
+        }
+
+        .front-standfirst {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(18px, 2.3vw, 23px);
+            line-height: 1.5;
+            text-align: center;
+            color: var(--ink-soft);
+            max-width: 56ch;
+            margin: 0 auto 40px;
+        }
+
+        .byline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            border-top: 1px solid var(--rule-soft);
+            border-bottom: 1px solid var(--rule-soft);
+            padding: 12px 0;
+            margin-bottom: 48px;
+        }
+
+        .byline b { color: var(--ink); font-weight: 700; }
+
+        /* --- Corps de texte en colonnes de journal --- */
+        .columns {
+            column-count: 3;
+            column-gap: 38px;
+            column-rule: 1px solid var(--rule-soft);
+            font-size: 16px;
+            line-height: 1.78;
+            color: var(--ink-soft);
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .columns p { margin-bottom: 17px; break-inside: avoid-column; }
+        .columns strong { color: var(--ink); font-weight: 700; }
+
+        .columns.two { column-count: 2; }
+
+        /* Lettrine */
+        .dropcap::first-letter {
+            font-family: var(--serif);
+            float: left;
+            font-size: 4.05em;
+            line-height: 0.82;
+            font-weight: 900;
+            color: var(--copper-dark);
+            padding: 6px 10px 0 0;
+        }
+
+        /* --- Cartouche photo façon presse --- */
+        figure.press {
+            margin: 0;
+            border: 1px solid var(--rule);
+            background: var(--paper-card);
+            padding: 10px 10px 0;
+            box-shadow: 0 18px 44px rgba(20, 17, 14, 0.14);
+        }
+
+        figure.press img {
+            display: block;
+            width: 100%;
+            height: auto;
+            filter: grayscale(0.82) contrast(1.14) sepia(0.16);
+            transition: filter 0.55s ease;
+        }
+
+        figure.press:hover img { filter: grayscale(0.15) contrast(1.05) sepia(0.04); }
+
+        figure.press figcaption {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: var(--ink-muted);
+            padding: 11px 2px 12px;
+            border-top: 1px solid var(--rule-soft);
+            margin-top: 10px;
+        }
+
+        figure.press figcaption b {
+            font-style: normal;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--copper-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .press-wide { margin: 46px 0 14px; }
+
+        /* Recadrage en bandeau : une photo de une n'occupe jamais tout l'écran */
+        .press-wide img { max-height: 470px; object-fit: cover; object-position: center 42%; }
+
+        /* Mise en page texte + photo */
+        .split {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .split.reverse { grid-template-columns: 0.95fr 1.05fr; }
+
+        /* --- En-têtes de section papier --- */
+        .paper-label {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--copper-dark);
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--copper);
+            margin-bottom: 20px;
+        }
+
+        .paper-title {
+            font-family: var(--serif);
+            font-size: clamp(30px, 4.4vw, 48px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .paper-desc {
+            font-size: 17px;
+            color: var(--ink-soft);
+            max-width: 62ch;
+        }
+
+        .section-head { margin-bottom: 48px; }
+        .section-head.center { text-align: center; }
+        .section-head.center .paper-desc { margin-inline: auto; }
+
+        /* --- Exergue / citation --- */
+        .pullquote {
+            border-top: 3px solid var(--rule);
+            border-bottom: 3px solid var(--rule);
+            padding: 30px 0;
+            margin: 42px 0;
+            text-align: center;
+        }
+
+        .pullquote blockquote {
+            font-family: var(--serif);
+            font-size: clamp(22px, 3.2vw, 33px);
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.32;
+            letter-spacing: -0.015em;
+            margin-bottom: 14px;
+        }
+
+        .pullquote cite {
+            font-family: var(--mono);
+            font-style: normal;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+        }
+
+        /* --- Chiffres clés façon encadré presse --- */
+        .stat-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid var(--rule);
+            background: var(--paper-card);
+            margin: 44px 0;
+        }
+
+        .stat-cell {
+            padding: 28px 24px;
+            border-right: 1px solid var(--rule-soft);
+            text-align: center;
+        }
+
+        .stat-cell:last-child { border-right: none; }
+
+        .stat-cell .num {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4.2vw, 46px);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--copper-dark);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-cell .cap {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            line-height: 1.5;
+        }
+
+        /* --- Cartes graphiques --- */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 26px;
+        }
+
+        .chart-card {
+            background: var(--paper-card);
+            border: 1px solid var(--rule);
+            padding: 26px;
+        }
+
+        .chart-title {
+            font-family: var(--serif);
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .chart-subtitle {
+            font-size: 13.5px;
+            color: var(--ink-muted);
+            margin-bottom: 20px;
+        }
+
+        .chart-box { position: relative; height: 280px; }
+
+        .chart-source {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--rule-soft);
+        }
+
+        /* --- Chronologie législative --- */
+        .timeline {
+            border-left: 2px solid var(--rule-soft);
+            margin-left: 10px;
+            padding-left: 34px;
+        }
+
+        .tl-item { position: relative; padding-bottom: 34px; }
+        .tl-item:last-child { padding-bottom: 0; }
+
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -43px;
+            top: 5px;
+            width: 15px; height: 15px;
+            border-radius: 50%;
+            background: var(--paper);
+            border: 3px solid var(--rule-soft);
+        }
+
+        .tl-item.done::before { border-color: var(--copper); background: var(--copper); }
+        .tl-item.now::before {
+            border-color: var(--copper);
+            background: var(--paper);
+            box-shadow: 0 0 0 5px rgba(184, 115, 51, 0.18);
+        }
+
+        .tl-date {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--copper-dark);
+            margin-bottom: 5px;
+        }
+
+        .tl-title {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .tl-text { font-size: 15px; color: var(--ink-soft); }
+
+        .tl-tag {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: 2px;
+        }
+
+        .tl-tag.ok  { background: rgba(0, 210, 106, 0.16); color: #067A40; }
+        .tl-tag.wip { background: rgba(255, 184, 0, 0.20); color: #8A6300; }
+        .tl-tag.soon{ background: rgba(20, 17, 14, 0.08); color: var(--ink-muted); }
+
+        /* --- Sommaire du rapport --- */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            border: 1px solid var(--rule);
+            background: var(--paper-card);
+        }
+
+        .toc-item {
+            display: flex;
+            gap: 18px;
+            padding: 22px 26px;
+            border-bottom: 1px solid var(--rule-soft);
+            border-right: 1px solid var(--rule-soft);
+            transition: background 0.25s ease;
+        }
+
+        .toc-item:hover { background: rgba(184, 115, 51, 0.07); }
+        .toc-item:nth-child(2n) { border-right: none; }
+
+        .toc-num {
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--copper);
+            padding-top: 3px;
+            min-width: 26px;
+        }
+
+        .toc-name {
+            font-family: var(--serif);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .toc-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+
+        .toc-pages {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--ink-muted);
+            margin-left: auto;
+            padding-top: 4px;
+            white-space: nowrap;
+        }
+
+        /* --- Aperçu verrouillé des pages du rapport --- */
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .preview-card {
+            position: relative;
+            background: var(--paper-card);
+            border: 1px solid var(--rule);
+            padding: 26px;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .preview-tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--copper-dark);
+            margin-bottom: 12px;
+        }
+
+        .preview-h {
+            font-family: var(--serif);
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 1.22;
+            margin-bottom: 14px;
+        }
+
+        .preview-body { font-size: 14.5px; color: var(--ink-soft); line-height: 1.72; }
+
+        /* Le texte s'estompe puis se floute : on lit le début, jamais la fin */
+        .preview-blur {
+            filter: blur(4.2px);
+            user-select: none;
+            opacity: 0.62;
+            margin-top: 10px;
+        }
+
+        .preview-fade {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 130px;
+            background: linear-gradient(180deg, transparent, var(--paper-card) 72%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+
+        .lock-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--ink);
+            color: var(--paper);
+            padding: 8px 16px;
+            border-radius: 100px;
+        }
+
+        /* --- Témoignages communauté --- */
+        .testi-grid {
+            columns: 3;
+            column-gap: 22px;
+        }
+
+        .testi {
+            break-inside: avoid;
+            background: var(--paper-card);
+            border: 1px solid var(--rule);
+            padding: 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 0 rgba(20,17,14,0.05);
+        }
+
+        .testi-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .avatar {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .testi-name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1.3;
+        }
+
+        .verified {
+            width: 14px; height: 14px;
+            flex-shrink: 0;
+            color: var(--blue);
+        }
+
+        .testi-handle {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            color: var(--ink-muted);
+        }
+
+        .testi-stars {
+            color: var(--copper);
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .testi-text {
+            font-size: 14.5px;
+            line-height: 1.68;
+            color: var(--ink-soft);
+        }
+
+        .testi-text strong { color: var(--ink); font-weight: 600; }
+
+        .testi-foot {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid var(--rule-soft);
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+        }
+
+        .testi-src {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 700;
+            color: var(--copper-dark);
+        }
+
+        /* --- Bandeau preuve sociale --- */
+        .social-band {
+            background: var(--paper-deep);
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .social-item .ico { font-size: 26px; margin-bottom: 8px; display: block; }
+
+        .social-item .val {
+            font-family: var(--serif);
+            font-size: clamp(28px, 3.6vw, 40px);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .social-item .lbl {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+        }
+
+        /* --- Bandeau partenaire eToro --- */
+        .etoro-band {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px 26px;
+            padding: 22px 0;
+        }
+
+        .etoro-logo {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            display: block;
+            box-shadow: 0 4px 14px rgba(20,17,14,0.18);
+        }
+
+        .etoro-logo.sm { width: 30px; height: 30px; border-radius: 7px; }
+        .etoro-logo.lg { width: 62px; height: 62px; border-radius: 14px; }
+
+        .etoro-band-text {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+        }
+
+        .etoro-band-text b { color: var(--ink); }
+
+        /* ============ PRICING — RETOUR AU SOMBRE ============ */
+        .dark-zone {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-zone::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 0%, rgba(184,115,51,0.16), transparent 55%),
+                radial-gradient(ellipse at 80% 100%, rgba(0,210,106,0.08), transparent 55%);
+            pointer-events: none;
+        }
+
+        .dark-zone > * { position: relative; z-index: 1; }
+
+        .dark-label {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--copper-light);
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--copper);
+            margin-bottom: 20px;
+        }
+
+        .dark-title {
+            font-family: var(--serif);
+            font-size: clamp(32px, 4.8vw, 54px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            margin-bottom: 16px;
+        }
+
+        .dark-desc { font-size: 17px; color: var(--text-secondary); max-width: 62ch; }
+        .center { text-align: center; }
+        .center .dark-desc { margin-inline: auto; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 26px;
+            max-width: 980px;
+            margin: 52px auto 0;
+            align-items: stretch;
+        }
+
+        .price-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 38px 32px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .price-card:hover { transform: translateY(-4px); border-color: #3A3A3A; }
+
+        /* L'offre gratuite est celle qu'on veut voir cliquée : on la met en avant */
+        .price-card.featured {
+            border-color: var(--success);
+            background: linear-gradient(180deg, rgba(0,210,106,0.07), var(--bg-card) 45%);
+            box-shadow: 0 22px 60px rgba(0, 210, 106, 0.14);
+        }
+
+        .price-card.featured:hover {
+            border-color: var(--success);
+            box-shadow: 0 28px 70px rgba(0, 210, 106, 0.22);
+        }
+
+        .price-ribbon {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: #04240F;
+            font-family: var(--mono);
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .price-ribbon.copper { background: var(--copper); color: #1A0F04; }
+
+        .price-kicker {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .price-name {
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .price-amount {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 18px 0 6px;
+            flex-wrap: wrap;
+        }
+
+        .price-amount .now {
+            font-family: var(--serif);
+            font-size: 56px;
+            font-weight: 900;
+            letter-spacing: -0.035em;
+            line-height: 1;
+        }
+
+        .price-amount .now.free {
+            background: linear-gradient(135deg, var(--success), #7BE8B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-amount .was {
+            font-family: var(--serif);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            text-decoration-thickness: 2px;
+        }
+
+        .price-note { font-size: 13.5px; color: var(--text-muted); margin-bottom: 26px; }
+
+        .price-feats { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+
+        .price-feats li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.045);
+        }
+
+        .price-feats li:last-child { border-bottom: none; }
+        .price-feats li b { color: var(--text-primary); font-weight: 600; }
+
+        .check {
+            width: 19px; height: 19px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--success);
+        }
+
+        .check.copper { color: var(--copper); }
+
+        .btn-block { width: 100%; }
+
+        .btn-free {
+            background: linear-gradient(135deg, var(--success), #00A855);
+            color: #04240F;
+            box-shadow: 0 10px 30px rgba(0, 210, 106, 0.28);
+        }
+
+        .btn-free:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(0, 210, 106, 0.42);
+        }
+
+        .price-sub {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 14px;
+            line-height: 1.6;
+        }
+
+        .price-trust {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 34px;
+            font-size: 12.5px;
+            color: var(--text-muted);
+        }
+
+        /* ============ MODALES ============ */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(6, 6, 6, 0.82);
+            backdrop-filter: blur(6px);
+            overflow-y: auto;
+        }
+
+        .modal.open { display: flex; }
+
+        .modal-box {
+            width: 100%;
+            max-width: 940px;
+            background: #fff;
+            color: #1A1F36;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.55);
+            animation: modal-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: auto;
+        }
+
+        @keyframes modal-in {
+            from { opacity: 0; transform: translateY(22px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Bandeau démo — la page ne traite aucun paiement réel */
+        .demo-banner {
+            background: #FFB800;
+            color: #3D2B00;
+            font-family: var(--mono);
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 9px 16px;
+            line-height: 1.5;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px; right: 18px;
+            width: 34px; height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0,0,0,0.06);
+            color: #4F566B;
+            font-size: 19px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: background 0.2s ease;
+            z-index: 3;
+        }
+
+        .modal-close:hover { background: rgba(0,0,0,0.13); }
+
+        /* --- Réplique visuelle du checkout Stripe --- */
+        .stripe-wrap { display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+
+        .stripe-left {
+            background: #F6F9FC;
+            padding: 40px 44px;
+            border-right: 1px solid #E6EBF1;
+        }
+
+        .stripe-merchant {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4F566B;
+            margin-bottom: 34px;
+        }
+
+        .stripe-merchant .mark {
+            width: 26px; height: 26px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--copper), var(--copper-dark));
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-family: var(--serif);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .stripe-amount-label { font-size: 14.5px; color: #4F566B; margin-bottom: 6px; }
+
+        .stripe-amount {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #1A1F36;
+            margin-bottom: 34px;
+        }
+
+        .stripe-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            font-size: 14px;
+            padding: 13px 0;
+            border-bottom: 1px solid #E6EBF1;
+            color: #4F566B;
+        }
+
+        .stripe-line .name { color: #1A1F36; font-weight: 500; }
+        .stripe-line .sub { font-size: 12.5px; color: #8792A2; margin-top: 2px; }
+        .stripe-line.total { font-weight: 700; color: #1A1F36; font-size: 15.5px; border-bottom: none; padding-top: 16px; }
+
+        .stripe-right { padding: 58px 44px 40px; }
+
+        .stripe-pay-btn-apple {
+            width: 100%;
+            padding: 13px;
+            border-radius: 6px;
+            border: none;
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .stripe-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 22px 0;
+            font-size: 12.5px;
+            color: #8792A2;
+        }
+
+        .stripe-divider::before, .stripe-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #E6EBF1;
+        }
+
+        .field { margin-bottom: 16px; }
+
+        .field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4F566B;
+            margin-bottom: 6px;
+        }
+
+        .field input, .field select {
+            width: 100%;
+            padding: 11px 13px;
+            border: 1px solid #E0E6EB;
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: var(--sans);
+            color: #1A1F36;
+            background: #fff;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.03);
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .field input:focus, .field select:focus {
+            outline: none;
+            border-color: #635BFF;
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.18);
+        }
+
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .stripe-submit {
+            width: 100%;
+            padding: 13px;
+            border-radius: 6px;
+            border: none;
+            background: #635BFF;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--sans);
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s ease;
+        }
+
+        .stripe-submit:hover { background: #544DFF; }
+        .stripe-submit:disabled { background: #A5A0FF; cursor: not-allowed; }
+
+        .stripe-foot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #8792A2;
+        }
+
+        .stripe-foot b { color: #4F566B; font-weight: 600; }
+
+        .stripe-switch {
+            margin-top: 22px;
+            padding: 16px;
+            border-radius: 10px;
+            background: rgba(0, 210, 106, 0.09);
+            border: 1px solid rgba(0, 210, 106, 0.32);
+            text-align: center;
+            font-size: 13.5px;
+            color: #17603C;
+            line-height: 1.6;
+        }
+
+        .stripe-switch button {
+            background: none;
+            border: none;
+            font-family: var(--sans);
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #00863F;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 0;
+        }
+
+        /* --- Modale parcours gratuit eToro --- */
+        .free-box {
+            max-width: 640px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .free-head {
+            padding: 36px 38px 26px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(0,210,106,0.10), transparent);
+        }
+
+        .free-head .free-title {
+            font-family: var(--serif);
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .free-head p { font-size: 15px; color: var(--text-secondary); }
+
+        .free-body { padding: 30px 38px 36px; }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            padding-bottom: 26px;
+            position: relative;
+        }
+
+        .step:last-of-type { padding-bottom: 10px; }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            left: 18px; top: 44px; bottom: 6px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .step:last-of-type::after { display: none; }
+
+        .step-num {
+            width: 37px; height: 37px;
+            border-radius: 50%;
+            background: var(--bg-card-hover);
+            border: 1px solid var(--border);
+            display: grid;
+            place-items: center;
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--copper-light);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step.active .step-num { background: var(--success); border-color: var(--success); color: #04240F; }
+
+        .step-title {
+            font-size: 16.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .step-text { font-size: 14.5px; color: var(--text-secondary); line-height: 1.68; }
+        .step-text code {
+            font-family: var(--mono);
+            font-size: 13px;
+            background: rgba(255,255,255,0.07);
+            padding: 2px 7px;
+            border-radius: 4px;
+            color: var(--copper-light);
+        }
+
+        .step-action { margin-top: 14px; }
+
+        .free-note {
+            margin-top: 22px;
+            padding: 15px 17px;
+            border-radius: 10px;
+            background: rgba(255, 184, 0, 0.08);
+            border: 1px solid rgba(255, 184, 0, 0.28);
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* --- FAQ --- */
+        .faq { border-top: 1px solid var(--rule-soft); }
+
+        .faq-item { border-bottom: 1px solid var(--rule-soft); }
+
+        .faq-q {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--serif);
+            font-size: 19.5px;
+            font-weight: 700;
+            color: var(--ink);
+            transition: color 0.2s ease;
+        }
+
+        .faq-q:hover { color: var(--copper-dark); }
+
+        .faq-icon {
+            font-family: var(--mono);
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--copper);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            line-height: 1;
+        }
+
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-a { max-height: 520px; padding-bottom: 24px; }
+
+        .faq-a p { font-size: 15.5px; color: var(--ink-soft); line-height: 1.75; max-width: 78ch; }
+        .faq-a p + p { margin-top: 12px; }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--bg-primary);
+            padding: 60px 0 44px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-logo span { color: var(--copper); }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover { color: var(--copper); }
+
+        .footer-disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 760px;
+            margin: 0 auto 14px;
+            line-height: 1.7;
+        }
+
+        .footer-disclaimer b { color: var(--text-secondary); }
+
+        /* --- Animation d'apparition --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* --- Barre CTA mobile collante --- */
+        .sticky-cta {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            z-index: 900;
+            display: none;
+            gap: 10px;
+            padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+            background: rgba(13, 13, 13, 0.96);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid var(--border);
+        }
+
+        .sticky-cta .btn { flex: 1; padding: 14px 12px; font-size: 14px; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1000px) {
+            .charts-grid, .toc-grid { grid-template-columns: 1fr; }
+            .toc-item { border-right: none; }
+            .preview-grid { grid-template-columns: 1fr; }
+            .testi-grid { columns: 2; }
+            .split, .split.reverse { grid-template-columns: 1fr; gap: 34px; }
+            .stat-strip { grid-template-columns: repeat(2, 1fr); }
+            .stat-cell:nth-child(2n) { border-right: none; }
+            .stat-cell:nth-child(-n+2) { border-bottom: 1px solid var(--rule-soft); }
+            .columns { column-count: 2; }
+            .stripe-wrap { grid-template-columns: 1fr; }
+            .stripe-left { border-right: none; border-bottom: 1px solid #E6EBF1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .paper section { padding: 62px 0; }
+            .dark-zone { padding: 68px 0; }
+            .hero { padding: 120px 0 60px; min-height: auto; }
+            .hero-meta { gap: 26px 34px; }
+            .columns, .columns.two { column-count: 1; text-align: left; }
+            .testi-grid { columns: 1; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
+            .stripe-left, .stripe-right { padding: 30px 24px; }
+            .free-head, .free-body { padding-left: 24px; padding-right: 24px; }
+            .sticky-cta { display: flex; }
+            body { padding-bottom: 76px; }
+            .hero-actions .btn { width: 100%; }
+            .modal { padding: 12px; }
+        }
+
+        @media (max-width: 420px) {
+            .stat-strip { grid-template-columns: 1fr; }
+            .stat-cell { border-right: none; border-bottom: 1px solid var(--rule-soft); }
+            .field-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ NAVIGATION ============ -->
+    <nav>
+        <div class="container">
+            <a href="#" class="nav-logo">Crypto Comiks</a>
+            <ul class="nav-links">
+                <li><a href="#dossier">Le dossier</a></li>
+                <li><a href="#chiffres">Les chiffres</a></li>
+                <li><a href="#sommaire">Sommaire</a></li>
+                <li><a href="#avis">Avis</a></li>
+                <li><a href="#offre">Tarif</a></li>
+            </ul>
+            <button class="nav-cta" onclick="openFree()">Obtenir gratuitement</button>
+        </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Édition 2026 · mise à jour du 4 septembre
+            </div>
+
+            <div class="hero-kicker">Rapport d'analyse réglementaire · H.R. 3633</div>
+
+            <h1 class="hero-title">
+                Le <span class="copper-text">CLARITY Act</span><br>expliqué ligne par ligne.
+            </h1>
+
+            <p class="hero-subtitle">
+                La loi qui décide enfin <strong>qui régule quoi</strong> dans la crypto américaine : SEC ou CFTC.
+                148 pages d'analyse pour comprendre ce qui change concrètement pour tes actifs, ton exchange
+                et ta fiscalité — <strong>avant</strong> que le marché ne l'intègre.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#offre" class="btn btn-primary">Lire le rapport complet — 199 €</a>
+                <button class="btn btn-ghost" onclick="openFree()">
+                    <span class="btn-free-tag">0 €</span>
+                    L'obtenir gratuitement
+                </button>
+            </div>
+
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="label">Vote Chambre</span>
+                    <span class="value up">294–134</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Pages d'analyse</span>
+                    <span class="value">148</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Tokens passés au crible</span>
+                    <span class="value">63</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="label">Lecteurs</span>
+                    <span class="value copper">2 847</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-track" id="tickerTrack">
+            <!-- Dupliqué en JS pour un défilement sans couture -->
+        </div>
+    </div>
+
+    <!-- ============ ZONE PAPIER ============ -->
+    <main class="paper">
+
+        <!-- --- Manchette --- -->
+        <div class="container">
+            <div class="masthead">
+                <div class="masthead-rules">
+                    <div class="masthead-title">The Crypto Comiks Review</div>
+                </div>
+                <div class="masthead-meta">
+                    <span>Édition spéciale nº 14</span>
+                    <span class="sep">◆</span>
+                    <span>Régulation &amp; marchés</span>
+                    <span class="sep">◆</span>
+                    <span>Vendredi 4 septembre 2026</span>
+                    <span class="sep">◆</span>
+                    <span>148 pages · FR</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- Une --- -->
+        <section id="dossier" class="front-page">
+            <div class="container">
+                <h2 class="front-headline reveal">Washington vient de réécrire les règles du jeu crypto</h2>
+
+                <p class="front-standfirst reveal">
+                    Après quatre ans de guerre de territoire entre la SEC et la CFTC, le Congrès a tranché.
+                    Voici ce que personne ne t'explique correctement — et pourquoi ça se joue maintenant.
+                </p>
+
+                <div class="byline reveal">
+                    <span>Par <b>Crypto Comiks</b></span>
+                    <span class="sep">◆</span>
+                    <span>Analyse indépendante</span>
+                    <span class="sep">◆</span>
+                    <span>Temps de lecture : 4 h 20</span>
+                </div>
+
+                <figure class="press press-wide reveal">
+                    <img src="assets/clarity-act-capitol.jpg" alt="Le CLARITY Act devant le Capitole des États-Unis" loading="lazy">
+                    <figcaption>
+                        <b>Capitole — Washington D.C.</b>
+                        Le Digital Asset Market Clarity Act est le premier texte américain à définir précisément
+                        la frontière entre actif financier et matière première numérique. Quatre ans de flou
+                        réglementaire arrivent à leur terme.
+                    </figcaption>
+                </figure>
+
+                <div class="columns dropcap reveal" style="margin-top:44px;">
+                    <p>Pendant des années, la question la plus simple du marché crypto américain n'avait aucune réponse
+                    claire : ton token, c'est un titre financier ou une matière première ? Selon la case, ce n'est ni le
+                    même régulateur, ni les mêmes obligations, ni le même risque de procès. La SEC disait l'un,
+                    la CFTC laissait entendre l'autre, et les tribunaux tranchaient au cas par cas.</p>
+
+                    <p>Le <strong>CLARITY Act</strong> — Digital Asset Market Clarity Act, référencé <strong>H.R. 3633</strong> —
+                    s'attaque frontalement à ce vide. Il pose une grille de lecture : ce qui relève du
+                    <strong>« digital commodity »</strong> bascule vers la CFTC, ce qui reste un contrat
+                    d'investissement demeure sous l'autorité de la SEC.</p>
+
+                    <p>Le pivot du texte tient dans une notion nouvelle : celle de <strong>« mature blockchain
+                    system »</strong>. Un réseau suffisamment décentralisé, dont aucune entité ne contrôle
+                    l'évolution ni la valeur, change de statut. Ce n'est plus une promesse portée par une équipe,
+                    c'est une infrastructure. Et l'infrastructure ne se régule pas comme une levée de fonds.</p>
+
+                    <p>Sur le papier, l'idée est élégante. Dans les faits, elle crée une question à un milliard de
+                    dollars pour chaque projet : <strong>où passe exactement la ligne ?</strong> Le texte fixe des
+                    critères — répartition du contrôle, absence de pouvoir unilatéral, transparence du code —
+                    mais leur application concrète décidera du sort de dizaines d'actifs de premier plan.</p>
+
+                    <p>C'est précisément ce que ce rapport fait : prendre les critères du texte, un par un, et les
+                    appliquer méthodiquement à <strong>63 actifs</strong> parmi les plus détenus. Sans militantisme,
+                    sans « ça va faire x100 ». Avec le texte de loi ouvert à côté.</p>
+
+                    <p>Parce que la vraie asymétrie n'est pas dans le prix. Elle est dans le fait que la quasi-totalité
+                    du marché commente une loi de plusieurs centaines de pages <strong>sans l'avoir lue</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Exergue --- -->
+        <div class="container-narrow">
+            <div class="pullquote reveal">
+                <blockquote>« La régulation ne tue pas un marché. L'incertitude, si. »</blockquote>
+                <cite>Le fil conducteur du rapport — Chapitre 1</cite>
+            </div>
+        </div>
+
+        <!-- --- Chiffres clés + graphiques --- -->
+        <section id="chiffres">
+            <div class="container">
+                <div class="section-head center reveal">
+                    <span class="paper-label">Les chiffres</span>
+                    <h2 class="paper-title">Ce que le texte change, en données</h2>
+                    <p class="paper-desc">
+                        Extraits de la partie quantitative du rapport. Chaque graphique du document complet
+                        est sourcé et daté — pas de capture Twitter recyclée.
+                    </p>
+                </div>
+
+                <div class="stat-strip reveal">
+                    <div class="stat-cell">
+                        <span class="num">294</span>
+                        <span class="cap">Voix pour<br>à la Chambre</span>
+                    </div>
+                    <div class="stat-cell">
+                        <span class="num">78</span>
+                        <span class="cap">Démocrates ayant<br>voté le texte</span>
+                    </div>
+                    <div class="stat-cell">
+                        <span class="num">63</span>
+                        <span class="cap">Actifs analysés<br>un par un</span>
+                    </div>
+                    <div class="stat-cell">
+                        <span class="num">148</span>
+                        <span class="cap">Pages d'analyse<br>en français</span>
+                    </div>
+                </div>
+
+                <figure class="press press-wide reveal">
+                    <img src="assets/congress-floor.jpg" alt="Séance plénière de la Chambre des représentants des États-Unis" loading="lazy">
+                    <figcaption>
+                        <b>Chambre des représentants · 17 juillet 2025</b>
+                        294 voix pour, 134 contre. Parmi les votes favorables, 78 démocrates — une majorité
+                        transpartisane rare sur un sujet crypto, et le signal politique le plus important
+                        du dossier.
+                    </figcaption>
+                </figure>
+
+                <div class="charts-grid">
+                    <div class="chart-card reveal">
+                        <h3 class="chart-title">Le vote, décomposé</h3>
+                        <p class="chart-subtitle">H.R. 3633 — Chambre des représentants, 17 juillet 2025</p>
+                        <div class="chart-box"><canvas id="voteChart"></canvas></div>
+                        <p class="chart-source">Source : Registre des votes de la Chambre (Roll Call 194)</p>
+                    </div>
+
+                    <div class="chart-card reveal">
+                        <h3 class="chart-title">Qui régule quoi, après le texte</h3>
+                        <p class="chart-subtitle">Répartition des 63 actifs de l'échantillon du rapport</p>
+                        <div class="chart-box"><canvas id="splitChart"></canvas></div>
+                        <p class="chart-source">Analyse Crypto Comiks — grille de lecture appliquée au texte</p>
+                    </div>
+
+                    <div class="chart-card reveal">
+                        <h3 class="chart-title">Le coût de l'incertitude</h3>
+                        <p class="chart-subtitle">Part des projets crypto choisissant une juridiction hors USA</p>
+                        <div class="chart-box"><canvas id="offshoreChart"></canvas></div>
+                        <p class="chart-source">Compilation d'annonces publiques de sièges sociaux, 2018-2026</p>
+                    </div>
+
+                    <div class="chart-card reveal">
+                        <h3 class="chart-title">Les briques du texte</h3>
+                        <p class="chart-subtitle">Poids relatif des thèmes dans le corps de la loi</p>
+                        <div class="chart-box"><canvas id="themeChart"></canvas></div>
+                        <p class="chart-source">Décompte par titre et sous-titre du texte législatif</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Le contexte politique --- -->
+        <section style="background: var(--paper-deep); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);">
+            <div class="container">
+                <div class="split">
+                    <div class="reveal">
+                        <span class="paper-label">Le contexte</span>
+                        <h2 class="paper-title">Pourquoi maintenant, et pas il y a trois ans</h2>
+                        <div class="columns two" style="column-count:1; margin-top:22px;">
+                            <p>Le CLARITY Act n'arrive pas dans le vide. Il s'inscrit dans une séquence politique où
+                            la crypto est passée du statut de sujet marginal à celui d'argument de campagne. Cette
+                            bascule explique une partie du calendrier — et une partie des compromis inscrits dans
+                            le texte.</p>
+
+                            <p>Le rapport consacre un chapitre entier à cette économie politique : <strong>qui a poussé
+                            le texte</strong>, quels amendements ont été négociés en commission, quelles lignes ont
+                            été abandonnées pour obtenir les 78 voix démocrates qui ont fait la différence.</p>
+
+                            <p>Comprendre ça, ce n'est pas de la politique pour la politique. C'est ce qui permet
+                            d'anticiper la suite : <strong>les points fragiles du texte sont exactement ceux qui ont
+                            été négociés en dernier</strong>, et ce sont eux qui bougeront au Sénat ou lors de la
+                            rédaction des règles d'application.</p>
+                        </div>
+                    </div>
+
+                    <figure class="press reveal">
+                        <img src="assets/trump-portrait.webp" alt="Portrait officiel lors d'une séance de travail à la Maison-Blanche" loading="lazy">
+                        <figcaption>
+                            <b>Maison-Blanche · Bureau ovale</b>
+                            L'exécutif a fait de la clarification réglementaire des actifs numériques un marqueur
+                            politique assumé. Le rapport détaille comment cette impulsion a accéléré un texte
+                            enlisé depuis 2021.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Chronologie --- -->
+        <section>
+            <div class="container">
+                <div class="split reverse">
+                    <figure class="press reveal">
+                        <img src="assets/trump-coins.png" alt="Pièces commémoratives et jetons crypto empilés" loading="lazy">
+                        <figcaption>
+                            <b>Marché de détail</b>
+                            Entre récit politique et spéculation pure, le rapport sépare rigoureusement ce que la
+                            loi change réellement de ce que le marché a simplement décidé de croire.
+                        </figcaption>
+                    </figure>
+
+                    <div class="reveal">
+                        <span class="paper-label">Chronologie</span>
+                        <h2 class="paper-title">Où en est vraiment le texte</h2>
+                        <p class="paper-desc" style="margin-bottom:30px;">
+                            La confusion la plus répandue : croire que le CLARITY Act est déjà pleinement applicable.
+                            Voici l'état réel du parcours législatif.
+                        </p>
+
+                        <div class="timeline">
+                            <div class="tl-item done">
+                                <div class="tl-date">Mai 2025</div>
+                                <div class="tl-title">Dépôt de H.R. 3633 <span class="tl-tag ok">Fait</span></div>
+                                <p class="tl-text">Le texte est introduit à la Chambre, porté par une coalition transpartisane des commissions des services financiers et de l'agriculture.</p>
+                            </div>
+
+                            <div class="tl-item done">
+                                <div class="tl-date">Juillet 2025</div>
+                                <div class="tl-title">Adoption à la Chambre <span class="tl-tag ok">294–134</span></div>
+                                <p class="tl-text">Vote large et transpartisan. 78 démocrates rejoignent la majorité républicaine. Le texte part au Sénat.</p>
+                            </div>
+
+                            <div class="tl-item now">
+                                <div class="tl-date">2025 — 2026</div>
+                                <div class="tl-title">Examen au Sénat <span class="tl-tag wip">En cours</span></div>
+                                <p class="tl-text">C'est ici que tout se joue. Le Sénat travaille sa propre version : les arbitrages sur la définition de la décentralisation peuvent déplacer des dizaines d'actifs d'une catégorie à l'autre.</p>
+                            </div>
+
+                            <div class="tl-item">
+                                <div class="tl-date">Ensuite</div>
+                                <div class="tl-title">Règles d'application <span class="tl-tag soon">À venir</span></div>
+                                <p class="tl-text">Une loi votée n'est pas une loi applicable. La SEC et la CFTC devront écrire les règles concrètes — un chantier de plusieurs trimestres où se logera le diable.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Sommaire du rapport --- -->
+        <section id="sommaire" style="background: var(--paper-deep); border-top: 1px solid var(--rule-soft);">
+            <div class="container">
+                <div class="section-head center reveal">
+                    <span class="paper-label">Sommaire</span>
+                    <h2 class="paper-title">Ce qu'il y a exactement dans les 148 pages</h2>
+                    <p class="paper-desc">Douze chapitres. Aucun remplissage. Chaque partie répond à une question que tu te poses réellement.</p>
+                </div>
+
+                <div class="toc-grid reveal">
+                    <div class="toc-item">
+                        <span class="toc-num">01</span>
+                        <div>
+                            <div class="toc-name">Le problème que la loi résout</div>
+                            <p class="toc-desc">Quatre ans de guerre SEC / CFTC, résumés en 9 pages lisibles.</p>
+                        </div>
+                        <span class="toc-pages">p. 8</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">02</span>
+                        <div>
+                            <div class="toc-name">Anatomie du texte</div>
+                            <p class="toc-desc">Titre par titre, ce que chaque section fait réellement — en français.</p>
+                        </div>
+                        <span class="toc-pages">p. 17</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">03</span>
+                        <div>
+                            <div class="toc-name">« Mature blockchain system »</div>
+                            <p class="toc-desc">La définition qui décide de tout. Critères, seuils, zones grises.</p>
+                        </div>
+                        <span class="toc-pages">p. 31</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">04</span>
+                        <div>
+                            <div class="toc-name">Security ou commodity : l'arbre de décision</div>
+                            <p class="toc-desc">La grille que j'applique à chaque actif, reproductible chez toi.</p>
+                        </div>
+                        <span class="toc-pages">p. 44</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">05</span>
+                        <div>
+                            <div class="toc-name">Les 63 actifs passés au crible</div>
+                            <p class="toc-desc">Le cœur du rapport. Un verdict argumenté et un niveau de confiance par actif.</p>
+                        </div>
+                        <span class="toc-pages">p. 55</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">06</span>
+                        <div>
+                            <div class="toc-name">Ce qui change pour les exchanges</div>
+                            <p class="toc-desc">Enregistrement, ségrégation des fonds, listings : le nouveau cadre.</p>
+                        </div>
+                        <span class="toc-pages">p. 82</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">07</span>
+                        <div>
+                            <div class="toc-name">DeFi : protégée ou exposée ?</div>
+                            <p class="toc-desc">Les exemptions prévues, et jusqu'où elles tiennent vraiment.</p>
+                        </div>
+                        <span class="toc-pages">p. 93</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">08</span>
+                        <div>
+                            <div class="toc-name">Stablecoins et articulation avec le GENIUS Act</div>
+                            <p class="toc-desc">Deux textes, un seul écosystème. Comment ils s'emboîtent.</p>
+                        </div>
+                        <span class="toc-pages">p. 104</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">09</span>
+                        <div>
+                            <div class="toc-name">L'impact pour un investisseur européen</div>
+                            <p class="toc-desc">Le chapitre que les analyses américaines n'écrivent jamais. MiCA vs CLARITY.</p>
+                        </div>
+                        <span class="toc-pages">p. 112</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">10</span>
+                        <div>
+                            <div class="toc-name">Les 7 risques que personne ne mentionne</div>
+                            <p class="toc-desc">Y compris les deux scénarios où le texte se retourne contre le marché.</p>
+                        </div>
+                        <span class="toc-pages">p. 121</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">11</span>
+                        <div>
+                            <div class="toc-name">Scénarios 2026-2028</div>
+                            <p class="toc-desc">Trois trajectoires chiffrées, avec les signaux qui permettent de trancher.</p>
+                        </div>
+                        <span class="toc-pages">p. 131</span>
+                    </div>
+                    <div class="toc-item">
+                        <span class="toc-num">12</span>
+                        <div>
+                            <div class="toc-name">Checklist &amp; annexes</div>
+                            <p class="toc-desc">Glossaire, calendrier de suivi, sources primaires, tableau récapitulatif.</p>
+                        </div>
+                        <span class="toc-pages">p. 140</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Aperçu verrouillé --- -->
+        <section>
+            <div class="container">
+                <div class="section-head center reveal">
+                    <span class="paper-label">Extraits</span>
+                    <h2 class="paper-title">Trois pages, à moitié ouvertes</h2>
+                    <p class="paper-desc">Le début de trois passages du rapport. La suite est dans le document.</p>
+                </div>
+
+                <div class="preview-grid">
+                    <div class="preview-card reveal">
+                        <div class="preview-tag">Chapitre 03 · p. 34</div>
+                        <h3 class="preview-h">Le test de décentralisation, en pratique</h3>
+                        <p class="preview-body">
+                            Le texte ne demande pas si un réseau « est décentralisé » au sens où le marketing
+                            l'entend. Il pose une question beaucoup plus dure : existe-t-il une personne ou un
+                            groupe capable, seul, de modifier le fonctionnement du protocole ou d'influencer
+                            substantiellement la valeur de l'actif ?
+                        </p>
+                        <p class="preview-body preview-blur">
+                            Appliqué littéralement, ce critère élimine d'emblée une large part des réseaux dont
+                            la fondation conserve les clés de mise à niveau. Le tableau 3.2 recense les douze
+                            configurations de gouvernance rencontrées dans l'échantillon et attribue à chacune
+                            un score de conformité, en distinguant le contrôle formel du contrôle effectif.
+                        </p>
+                        <div class="preview-fade"><span class="lock-pill">🔒 Suite dans le rapport</span></div>
+                    </div>
+
+                    <div class="preview-card reveal">
+                        <div class="preview-tag">Chapitre 10 · p. 123</div>
+                        <h3 class="preview-h">Risque nº 3 : l'effet de seuil</h3>
+                        <p class="preview-body">
+                            Le scénario le moins discuté est aussi le plus mécanique. Si un actif bascule de
+                            « security » vers « digital commodity » à une date connue à l'avance, alors le
+                            marché n'attend pas la date : il la price.
+                        </p>
+                        <p class="preview-body preview-blur">
+                            Ce qui crée une fenêtre où la volatilité se concentre sur quelques sessions, puis
+                            un vide une fois l'événement consommé. Les trois précédents étudiés ici montrent
+                            un schéma récurrent que l'on peut anticiper à condition d'avoir identifié la date
+                            pivot et le sens du basculement.
+                        </p>
+                        <div class="preview-fade"><span class="lock-pill">🔒 Suite dans le rapport</span></div>
+                    </div>
+
+                    <div class="preview-card reveal">
+                        <div class="preview-tag">Chapitre 09 · p. 114</div>
+                        <h3 class="preview-h">Et toi, depuis l'Europe ?</h3>
+                        <p class="preview-body">
+                            Première idée reçue à évacuer : « je suis en France, ça ne me concerne pas ».
+                            Faux, et pour une raison simple. La classification américaine détermine quelles
+                            plateformes peuvent lister quoi, et donc la liquidité disponible.
+                        </p>
+                        <p class="preview-body preview-blur">
+                            L'articulation avec MiCA crée par ailleurs des situations d'arbitrage réglementaire
+                            où un même actif ne relève pas du même régime des deux côtés de l'Atlantique. Le
+                            tableau comparatif 9.1 met en regard les deux cadres sur onze dimensions.
+                        </p>
+                        <div class="preview-fade"><span class="lock-pill">🔒 Suite dans le rapport</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Bandeau preuve sociale --- -->
+        <div class="social-band">
+            <div class="container" style="padding-top:52px; padding-bottom:44px;">
+                <div class="social-grid reveal">
+                    <div class="social-item">
+                        <span class="ico">📸</span>
+                        <span class="val">28 000</span>
+                        <span class="lbl">Abonnés Instagram</span>
+                    </div>
+                    <div class="social-item">
+                        <span class="ico">📱</span>
+                        <span class="val">9 400</span>
+                        <span class="lbl">Membres Telegram</span>
+                    </div>
+                    <div class="social-item">
+                        <span class="ico">📄</span>
+                        <span class="val">2 847</span>
+                        <span class="lbl">Rapports distribués</span>
+                    </div>
+                    <div class="social-item">
+                        <span class="ico">⭐</span>
+                        <span class="val">4,9<span style="font-size:0.5em;">/5</span></span>
+                        <span class="lbl">Note moyenne · 412 avis</span>
+                    </div>
+                </div>
+
+                <div class="etoro-band reveal" style="margin-top:40px; border-top:1px solid var(--rule-soft); padding-top:30px;">
+                    <img src="assets/etoro-logo.png" alt="eToro" class="etoro-logo">
+                    <span class="etoro-band-text">Partenaire officiel de la communauté · <b>Accès gratuit au rapport via eToro</b></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- Témoignages --- -->
+        <section id="avis">
+            <div class="container">
+                <div class="section-head center reveal">
+                    <span class="paper-label">La communauté</span>
+                    <h2 class="paper-title">412 retours, une moyenne de 4,9</h2>
+                    <p class="paper-desc">Extraits des messages reçus sur Instagram et Telegram après les précédents rapports.</p>
+                </div>
+
+                <div class="testi-grid" id="testiGrid">
+                    <!-- Injecté en JS depuis le tableau TESTIMONIALS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- --- FAQ --- -->
+        <section style="background: var(--paper-deep); border-top:1px solid var(--rule-soft);">
+            <div class="container-narrow">
+                <div class="section-head center reveal">
+                    <span class="paper-label">Questions</span>
+                    <h2 class="paper-title">Ce qu'on me demande le plus</h2>
+                </div>
+
+                <div class="faq reveal">
+                    <div class="faq-item">
+                        <button class="faq-q">Le rapport est vraiment gratuit ? Où est le piège ?<span class="faq-icon">+</span></button>
+                        <div class="faq-a"><p>Il n'y a pas de piège, il y a un échange clair. Soit tu paies 199 € et tu ne dois rien à personne. Soit tu ouvres un compte eToro via mon lien partenaire : eToro me rémunère en tant que partenaire, et je t'offre le rapport en contrepartie. Tu ne paies pas un centime de plus qu'en passant en direct.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">Je dois déposer de l'argent sur eToro pour l'obtenir ?<span class="faq-icon">+</span></button>
+                        <div class="faq-a"><p>La création du compte suffit pour lancer la démarche. Tu m'envoies un message sur Telegram une fois le compte créé, et je te transmets le rapport à la main. Je ne te demanderai jamais tes identifiants, ni tes mots de passe, ni l'accès à ton compte.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">C'est un conseil en investissement ?<span class="faq-icon">+</span></button>
+                        <div class="faq-a"><p>Non, et c'est important. C'est un travail d'analyse et de vulgarisation réglementaire. Je ne te dis pas quoi acheter. Je te donne la grille de lecture pour que tu décides toi-même, avec des sources vérifiables. Les investissements en actifs numériques comportent un risque de perte en capital.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">Je suis débutant, c'est trop technique pour moi ?<span class="faq-icon">+</span></button>
+                        <div class="faq-a"><p>Le rapport est construit en deux niveaux de lecture, comme mes autres publications. Chaque chapitre ouvre sur un résumé « en clair » de deux pages, puis descend dans le détail pour ceux qui veulent le texte de loi ligne par ligne. Tu peux lire uniquement les résumés et déjà en tirer l'essentiel.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">Sous quel format je le reçois ?<span class="faq-icon">+</span></button>
+                        <div class="faq-a"><p>Un PDF de 148 pages, mis en page pour être lu à l'écran comme imprimé, plus le tableau récapitulatif des 63 actifs en fichier séparé. Les mises à jour du texte sur les 12 prochains mois te sont envoyées automatiquement.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q">Combien de temps pour recevoir le rapport en version gratuite ?<span class="faq-icon">+</span></button>
+                        <div class="faq-a"><p>Je traite les demandes manuellement sur Telegram, généralement sous 24 h. C'est le seul inconvénient réel de la version gratuite : ce n'est pas instantané, contrairement à l'achat direct.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ OFFRE ============ -->
+    <section id="offre" class="dark-zone">
+        <div class="container">
+            <div class="center reveal">
+                <span class="dark-label">L'accès</span>
+                <h2 class="dark-title">Deux façons de l'obtenir.<br>Une seule est gratuite.</h2>
+                <p class="dark-desc">Même rapport, mêmes 148 pages, mêmes mises à jour. Choisis simplement ce que tu préfères donner : ton argent, ou cinq minutes.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Offre payante -->
+                <div class="price-card reveal">
+                    <div class="price-ribbon copper">Accès immédiat</div>
+                    <div class="price-kicker">Option 1 · Achat direct</div>
+                    <h3 class="price-name">Le rapport complet</h3>
+                    <div class="price-amount">
+                        <span class="now">199 €</span>
+                        <span class="was">349 €</span>
+                    </div>
+                    <p class="price-note">Paiement unique. Accès à vie. Livraison instantanée par e-mail.</p>
+
+                    <ul class="price-feats">
+                        <li><svg class="check copper" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Le PDF <b>148 pages</b> en français</span></li>
+                        <li><svg class="check copper" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Le tableau des <b>63 actifs</b> classés</span></li>
+                        <li><svg class="check copper" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span><b>12 mois</b> de mises à jour incluses</span></li>
+                        <li><svg class="check copper" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Accès au canal Telegram privé</span></li>
+                        <li><svg class="check copper" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Livraison <b>immédiate</b>, sans attente</span></li>
+                    </ul>
+
+                    <button class="btn btn-primary btn-block" onclick="openCheckout()">Acheter maintenant — 199 €</button>
+                    <p class="price-sub">Paiement sécurisé par Stripe · CB, Apple Pay, Google Pay</p>
+                </div>
+
+                <!-- Offre gratuite -->
+                <div class="price-card featured reveal">
+                    <div class="price-ribbon">★ Le choix de 9 lecteurs sur 10</div>
+                    <div class="price-kicker">Option 2 · Via notre partenaire</div>
+                    <h3 class="price-name">Le même rapport, offert</h3>
+                    <div class="price-amount">
+                        <span class="now free">0 €</span>
+                        <span class="was">199 €</span>
+                    </div>
+                    <p class="price-note">Ouvre un compte eToro via le lien partenaire, envoie-moi un message, reçois le rapport.</p>
+
+                    <ul class="price-feats">
+                        <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span><b>Strictement identique</b> à l'offre à 199 €</span></li>
+                        <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Mises à jour 12 mois incluses</span></li>
+                        <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Accès au canal Telegram privé</span></li>
+                        <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Aucun surcoût côté eToro</span></li>
+                        <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 111.4-1.4l3.8 3.8 6.8-6.8a1 1 0 011.4 0z" clip-rule="evenodd"/></svg><span>Envoi manuel <b>sous 24 h</b></span></li>
+                    </ul>
+
+                    <button class="btn btn-free btn-block" onclick="openFree()">Débloquer gratuitement →</button>
+                    <p class="price-sub">3 étapes · environ 5 minutes · zéro paiement</p>
+                </div>
+            </div>
+
+            <div class="price-trust reveal">
+                <img src="assets/etoro-logo.png" alt="eToro" class="etoro-logo sm">
+                <span>Partenaire eToro</span>
+                <span style="opacity:.35;">·</span>
+                <span>🔒 Paiement Stripe</span>
+                <span style="opacity:.35;">·</span>
+                <span>📄 148 pages</span>
+                <span style="opacity:.35;">·</span>
+                <span>⭐ 4,9/5 sur 412 avis</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Crypto <span>Comiks</span></div>
+            <div class="footer-links">
+                <a href="https://instagram.com/crypto_comiks" target="_blank" rel="noopener">📸 @crypto_comiks</a>
+                <a href="#" target="_blank" rel="noopener">🐦 @crypto_comiks</a>
+                <a href="#" id="footerTelegram" target="_blank" rel="noopener">📱 Telegram</a>
+                <a href="#" target="_blank" rel="noopener">🎵 @crypto_comics</a>
+            </div>
+            <p class="footer-disclaimer">
+                <b>Avertissement.</b> Ce contenu est fourni à titre informatif et pédagogique uniquement et ne constitue
+                pas un conseil en investissement, ni une recommandation d'achat ou de vente. Les performances passées
+                ne préjugent pas des performances futures. Les crypto-actifs sont des instruments volatils et
+                non régulés dans plusieurs juridictions : tu peux perdre tout ton capital. DYOR.
+            </p>
+            <p class="footer-disclaimer">
+                <b>Transparence.</b> Les liens vers eToro sont des liens de partenariat. Si tu ouvres un compte via
+                ces liens, Crypto Comiks perçoit une commission de la part d'eToro, sans aucun surcoût pour toi.
+                C'est ce qui finance la mise à disposition gratuite du rapport. eToro est une plateforme
+                d'investissement multi-actifs ; investir comporte des risques.
+            </p>
+            <p class="footer-disclaimer" style="opacity:.75;">© 2026 Crypto Comiks · Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- ============ BARRE CTA MOBILE ============ -->
+    <div class="sticky-cta">
+        <button class="btn btn-ghost" onclick="openCheckout()">199 €</button>
+        <button class="btn btn-free" onclick="openFree()">Gratuit →</button>
+    </div>
+
+    <!-- ============ MODALE : CHECKOUT STRIPE (DÉMO VISUELLE) ============ -->
+    <div class="modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+        <div class="modal-box">
+            <!-- Aucun paiement n'est traité : cette maquette sert uniquement à valider le design -->
+            <div class="demo-banner">
+                ⚠️ Maquette de démonstration — aucun paiement n'est traité, aucune donnée n'est envoyée. N'entre pas de vraie carte bancaire.
+            </div>
+
+            <div class="stripe-wrap">
+                <button class="modal-close" onclick="closeModal('checkoutModal')" aria-label="Fermer">✕</button>
+
+                <!-- Colonne récapitulatif -->
+                <div class="stripe-left">
+                    <div class="stripe-merchant">
+                        <span class="mark">CC</span>
+                        Crypto Comiks
+                    </div>
+
+                    <div class="stripe-amount-label" id="checkoutTitle">Payer Crypto Comiks</div>
+                    <div class="stripe-amount">199,00 €</div>
+
+                    <div class="stripe-line">
+                        <div>
+                            <div class="name">Rapport CLARITY Act 2026</div>
+                            <div class="sub">PDF 148 pages + tableau des 63 actifs</div>
+                        </div>
+                        <div>199,00 €</div>
+                    </div>
+                    <div class="stripe-line">
+                        <div>
+                            <div class="name">Mises à jour 12 mois</div>
+                            <div class="sub">Inclus</div>
+                        </div>
+                        <div>0,00 €</div>
+                    </div>
+                    <div class="stripe-line">
+                        <div>
+                            <div class="name">Remise lancement</div>
+                            <div class="sub">Prix public 349,00 €</div>
+                        </div>
+                        <div style="color:#0E7C4A;">−150,00 €</div>
+                    </div>
+                    <div class="stripe-line total">
+                        <div>Total dû</div>
+                        <div>199,00 €</div>
+                    </div>
+                </div>
+
+                <!-- Colonne paiement -->
+                <div class="stripe-right">
+                    <button class="stripe-pay-btn-apple" onclick="fakePay(event)">Apple&nbsp;Pay</button>
+
+                    <div class="stripe-divider">Ou payer par carte</div>
+
+                    <form onsubmit="fakePay(event)" autocomplete="off">
+                        <div class="field">
+                            <label for="ckEmail">E-mail</label>
+                            <input type="email" id="ckEmail" placeholder="toi@exemple.com" autocomplete="off">
+                        </div>
+
+                        <div class="field">
+                            <label for="ckCard">Informations de carte</label>
+                            <input type="text" id="ckCard" placeholder="4242 4242 4242 4242" inputmode="numeric" autocomplete="off">
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="ckExp">Expiration</label>
+                                <input type="text" id="ckExp" placeholder="MM / AA" autocomplete="off">
+                            </div>
+                            <div class="field">
+                                <label for="ckCvc">CVC</label>
+                                <input type="text" id="ckCvc" placeholder="123" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="ckName">Nom du titulaire</label>
+                            <input type="text" id="ckName" placeholder="Prénom Nom" autocomplete="off">
+                        </div>
+
+                        <div class="field">
+                            <label for="ckCountry">Pays</label>
+                            <select id="ckCountry">
+                                <option>France</option>
+                                <option>Belgique</option>
+                                <option>Suisse</option>
+                                <option>Luxembourg</option>
+                                <option>Canada</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="stripe-submit" id="ckSubmit">Payer 199,00 €</button>
+                    </form>
+
+                    <div class="stripe-foot">
+                        <span>🔒</span> Propulsé par <b>stripe</b>
+                    </div>
+
+                    <!-- On rattrape ceux qui hésitent sur le prix -->
+                    <div class="stripe-switch">
+                        Tu peux aussi obtenir ce rapport <strong>gratuitement</strong> en 5 minutes.<br>
+                        <button type="button" onclick="closeModal('checkoutModal'); openFree();">Voir comment →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MODALE : ACCÈS GRATUIT VIA ETORO ============ -->
+    <div class="modal" id="freeModal" role="dialog" aria-modal="true" aria-labelledby="freeTitle">
+        <div class="modal-box free-box">
+            <button class="modal-close" onclick="closeModal('freeModal')" aria-label="Fermer" style="background:rgba(255,255,255,.08); color:#fff;">✕</button>
+
+            <div class="free-head">
+                <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
+                    <img src="assets/etoro-logo.png" alt="eToro" class="etoro-logo lg">
+                    <div>
+                        <div style="font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--success); font-weight:700;">Offre partenaire</div>
+                        <div style="font-family:var(--mono); font-size:12px; color:var(--text-muted);">Valeur 199 € · Coût pour toi : 0 €</div>
+                    </div>
+                </div>
+                <h3 class="free-title" id="freeTitle">Reçois le rapport complet gratuitement</h3>
+                <p>Trois étapes, environ cinq minutes. Aucun paiement, aucun abonnement.</p>
+            </div>
+
+            <div class="free-body">
+                <div class="step active">
+                    <div class="step-num">1</div>
+                    <div>
+                        <div class="step-title">Ouvre ton compte eToro</div>
+                        <p class="step-text">Clique sur le bouton ci-dessous : il ouvre eToro via mon lien partenaire. C'est ce lien qui finance le rapport — si tu passes en direct, je ne peux pas te l'offrir.</p>
+                        <div class="step-action">
+                            <a href="#" id="etoroBtn" target="_blank" rel="noopener sponsored" class="btn btn-free" onclick="markStep1()">
+                                Créer mon compte eToro →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <div class="step-title">Finalise l'inscription</div>
+                        <p class="step-text">Renseigne tes informations et valide ton compte. Rien de plus : tu n'as aucune obligation de dépôt pour lancer la démarche.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <div class="step-title">Écris-moi sur Telegram</div>
+                        <p class="step-text">Envoie-moi simplement le message <code>CLARITY</code> avec ton pseudo eToro. Je vérifie, et je t'envoie le rapport à la main — en général sous 24 h.</p>
+                        <div class="step-action">
+                            <a href="#" id="telegramBtn" target="_blank" rel="noopener" class="btn btn-ghost">
+                                📱 Ouvrir Telegram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="free-note">
+                    <b>Transparence totale :</b> eToro me rémunère en tant que partenaire lorsqu'un compte est ouvert
+                    via mon lien. Ça ne te coûte pas un centime de plus qu'une inscription en direct, et c'est ce qui
+                    me permet de distribuer gratuitement un rapport vendu 199 €. Je ne te demanderai jamais tes
+                    identifiants ni l'accès à ton compte. Investir comporte des risques de perte en capital.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    /* ==================================================================
+       CONFIGURATION — les 3 seules valeurs à changer sur cette page
+       ================================================================== */
+
+    // Lien partenaire eToro. Remplace cette valeur par ton lien tracké
+    // quand tu l'as : tous les boutons eToro de la page suivront.
+    const ETORO_URL = 'https://www.etoro.com/fr/stocks/';
+
+    // Ton compte Telegram, pour la demande de rapport gratuit.
+    const TELEGRAM_HANDLE = 'cryptocomiks';
+
+    // Message pré-rempli dans Telegram quand le lecteur te contacte.
+    const TELEGRAM_MESSAGE = 'CLARITY — Bonjour ! Je viens de créer mon compte eToro via ton lien, je souhaite recevoir le rapport CLARITY Act. Mon pseudo eToro : ';
+
+    /* ================================================================== */
+
+    const TELEGRAM_URL = 'https://t.me/' + TELEGRAM_HANDLE + '?text=' + encodeURIComponent(TELEGRAM_MESSAGE);
+
+    // Application des liens aux boutons concernés
+    document.getElementById('etoroBtn').href = ETORO_URL;
+    document.getElementById('telegramBtn').href = TELEGRAM_URL;
+    document.getElementById('footerTelegram').href = 'https://t.me/' + TELEGRAM_HANDLE;
+
+    /* ============ TICKER ============ */
+    const TICKER_ITEMS = [
+        'H.R. 3633 · <b>DIGITAL ASSET MARKET CLARITY ACT</b>',
+        'CHAMBRE · <b>294 POUR / 134 CONTRE</b>',
+        '<b>78 DÉMOCRATES</b> ONT VOTÉ LE TEXTE',
+        'SEC ⇄ CFTC · <b>LA LIGNE DE PARTAGE ENFIN TRACÉE</b>',
+        '<b>63 ACTIFS</b> ANALYSÉS UN PAR UN',
+        '<b>148 PAGES</b> · EN FRANÇAIS',
+        '<b>28 000</b> ABONNÉS INSTAGRAM',
+        '<b>2 847</b> RAPPORTS DISTRIBUÉS',
+        'NOTE COMMUNAUTÉ · <b>4,9 / 5</b>',
+        'ACCÈS GRATUIT VIA <b>eTORO</b>'
+    ];
+
+    const track = document.getElementById('tickerTrack');
+    // Doublé pour que la boucle de translation -50% soit invisible
+    track.innerHTML = [...TICKER_ITEMS, ...TICKER_ITEMS]
+        .map(t => `<span class="ticker-item">${t}<span class="dot">◆</span></span>`)
+        .join('');
+
+    /* ============ TÉMOIGNAGES ============
+       Contenus de démonstration — à remplacer par de vrais retours
+       (captures Instagram / Telegram) avant mise en production. */
+    const TESTIMONIALS = [
+        { n: 'Julien M.',    h: '@julien.crypto',     c: '#B87333', s: 5, src: 'Instagram',
+          t: "Franchement énorme. J'ai lu 3 threads sur le CLARITY Act avant, j'avais rien compris. Là en 40 pages tout est clair. <strong>Le chapitre sur la décentralisation vaut à lui seul le prix.</strong>", d: 'il y a 2 jours' },
+        { n: 'Sarah B.',     h: '@sarahbtc',          c: '#8B4513', s: 5, src: 'Telegram',
+          t: "Merci énormément pour l'analyse 🙏 J'ai enfin compris pourquoi mes altcoins réagissaient comme ça. Le tableau des 63 actifs je l'ai imprimé et affiché au-dessus de mon bureau.", d: 'il y a 5 jours' },
+        { n: 'Karim D.',     h: '@karim_invest',      c: '#4A9FFF', s: 5, src: 'Instagram',
+          t: "Je suis passé par eToro pour l'avoir gratuit, reçu en même pas 3h. <strong>Honnêtement je l'aurais payé les 199€ sans problème après lecture.</strong> Le support est top en plus.", d: 'il y a 1 semaine' },
+        { n: 'Thomas L.',    h: '@tom.defi',          c: '#A855F7', s: 5, src: 'Telegram',
+          t: "Le chapitre 7 sur la DeFi m'a fait changer d'avis sur deux positions. Je m'attendais à du contenu marketing, c'est du vrai travail de fond avec les sources primaires. Bravo.", d: 'il y a 1 semaine' },
+        { n: 'Amélie R.',    h: '@amelie.web3',       c: '#00A855', s: 5, src: 'Instagram',
+          t: "Super analyse comme d'hab ! 😍 Je suis débutante et j'avais peur que ce soit trop technique, mais les résumés en début de chapitre sont parfaits. On peut lire à son niveau.", d: 'il y a 2 semaines' },
+        { n: 'Nicolas P.',   h: '@nico_trading',      c: '#FF4757', s: 5, src: 'Telegram',
+          t: "Ce que j'apprécie : tu ne vends pas du rêve. Le chapitre sur les 7 risques est plus utile que tout ce que j'ai lu ailleurs. <strong>Les 2 scénarios baissiers, personne n'en parle.</strong>", d: 'il y a 2 semaines' },
+        { n: 'Fatou N.',     h: '@fatoun.crypto',     c: '#FFB800', s: 5, src: 'Instagram',
+          t: "Le chapitre sur l'impact pour nous en Europe 🔥 C'est LE truc que je cherchais partout. La comparaison MiCA / CLARITY je l'ai trouvée nulle part ailleurs. Merci pour le support hyper réactif.", d: 'il y a 3 semaines' },
+        { n: 'Marc V.',      h: '@marcv.eth',         c: '#D4956A', s: 5, src: 'Telegram',
+          t: "J'ai acheté le rapport cuivre l'an dernier, j'ai pris celui-là les yeux fermés. Même qualité, même rigueur. C'est devenu ma référence pour comprendre la régulation.", d: 'il y a 3 semaines' },
+        { n: 'Léa C.',       h: '@lea.onchain',       c: '#707070', s: 4, src: 'Instagram',
+          t: "Très complet, peut-être même un peu trop dense par moments 😅 mais c'est un vrai rapport, pas un PDF de 10 pages. La grille de décision chapitre 4 est excellente.", d: 'il y a 1 mois' }
+    ];
+
+    const VERIFIED_SVG = '<svg class="verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 1.8 3-.2.9 2.9 2.5 1.6-1.1 2.8 1.1 2.8-2.5 1.6-.9 2.9-3-.2L12 22l-2.4-1.8-3 .2-.9-2.9L3.2 15l1.1-2.8L3.2 9.4l2.5-1.6.9-2.9 3 .2L12 2zm-1.2 13.4l5.3-5.3-1.4-1.4-3.9 3.9-1.9-1.9-1.4 1.4 3.3 3.3z"/></svg>';
+
+    document.getElementById('testiGrid').innerHTML = TESTIMONIALS.map(x => `
+        <article class="testi">
+            <div class="testi-head">
+                <div class="avatar" style="background:${x.c}">${x.n.charAt(0)}${x.n.split(' ')[1] ? x.n.split(' ')[1].charAt(0) : ''}</div>
+                <div>
+                    <div class="testi-name">${x.n} ${VERIFIED_SVG}</div>
+                    <div class="testi-handle">${x.h}</div>
+                </div>
+            </div>
+            <div class="testi-stars">${'★'.repeat(x.s)}${'☆'.repeat(5 - x.s)}</div>
+            <p class="testi-text">${x.t}</p>
+            <div class="testi-foot">
+                <span class="testi-src">${x.src === 'Instagram' ? '📸' : '📱'} ${x.src}</span>
+                <span>${x.d}</span>
+            </div>
+        </article>
+    `).join('');
+
+    /* ============ GRAPHIQUES ============
+       Chart.js vient d'un CDN : s'il ne charge pas (réseau lent, bloqueur de
+       pub, coupure), on ne doit surtout pas casser le reste de la page —
+       les boutons d'achat et la modale eToro doivent rester fonctionnels. */
+    function initCharts() {
+        const INK_MUTED = '#7C746A';
+        const RULE_SOFT = '#C9C0AE';
+        const COPPER = '#B87333';
+
+        Chart.defaults.color = INK_MUTED;
+        Chart.defaults.borderColor = RULE_SOFT;
+        Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+        // 1. Décomposition du vote à la Chambre
+        new Chart(document.getElementById('voteChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Pour — 294', 'Contre — 134', 'Non votants — 5'],
+                datasets: [{
+                    data: [294, 134, 5],
+                    backgroundColor: ['#00A855', '#FF4757', '#C9C0AE'],
+                    borderWidth: 0,
+                    hoverOffset: 14
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                cutout: '58%',
+                plugins: { legend: { position: 'bottom', labels: { padding: 14, font: { size: 12 } } } }
+            }
+        });
+
+        // 2. Répartition SEC / CFTC des 63 actifs étudiés
+        new Chart(document.getElementById('splitChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Digital commodity → CFTC', 'Security → SEC', 'Zone grise / à trancher'],
+                datasets: [{
+                    data: [38, 14, 11],
+                    backgroundColor: [COPPER, '#4A9FFF', '#FFB800'],
+                    borderWidth: 0,
+                    hoverOffset: 14
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                cutout: '58%',
+                plugins: { legend: { position: 'bottom', labels: { padding: 12, font: { size: 11.5 } } } }
+            }
+        });
+
+        // 3. Fuite des projets hors juridiction américaine
+        new Chart(document.getElementById('offshoreChart'), {
+            type: 'line',
+            data: {
+                labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+                datasets: [{
+                    label: 'Projets domiciliés hors USA (%)',
+                    data: [31, 38, 44, 52, 61, 68, 64, 55, 47],
+                    borderColor: COPPER,
+                    backgroundColor: 'rgba(184, 115, 51, 0.14)',
+                    fill: true,
+                    tension: 0.34,
+                    borderWidth: 3,
+                    pointBackgroundColor: COPPER,
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { min: 20, max: 80, grid: { color: RULE_SOFT }, ticks: { callback: v => v + '%' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // 4. Poids des grands thèmes dans le corps du texte
+        new Chart(document.getElementById('themeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Classification des actifs', 'Obligations exchanges', 'Périmètre CFTC', 'Périmètre SEC', 'Exemptions DeFi', 'Protection investisseurs', 'Dispositions transitoires'],
+                datasets: [{
+                    label: 'Part du texte (%)',
+                    data: [24, 19, 16, 14, 11, 9, 7],
+                    backgroundColor: ctx => ctx.raw >= 19 ? COPPER : ctx.raw >= 11 ? '#D4956A' : '#DCC9B0',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { color: RULE_SOFT }, max: 30, ticks: { callback: v => v + '%' } },
+                    y: { grid: { display: false }, ticks: { font: { size: 11.5 } } }
+                }
+            }
+        });
+    }
+
+    if (typeof Chart !== 'undefined') {
+        try { initCharts(); } catch (err) { console.warn('Graphiques indisponibles :', err); }
+    } else {
+        console.warn('Chart.js non chargé — les graphiques sont masqués, le reste de la page fonctionne.');
+        document.querySelectorAll('.chart-card').forEach(c => { c.style.display = 'none'; });
+    }
+
+    /* ============ MODALES ============ */
+    let lastFocused = null;
+
+    function openModal(id) {
+        lastFocused = document.activeElement;
+        document.getElementById(id).classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocused) lastFocused.focus();
+    }
+
+    function openCheckout() { openModal('checkoutModal'); }
+    function openFree()     { openModal('freeModal'); }
+
+    // Fermeture au clic sur le fond
+    document.querySelectorAll('.modal').forEach(m => {
+        m.addEventListener('click', e => { if (e.target === m) closeModal(m.id); });
+    });
+
+    // Fermeture à la touche Échap
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal.open').forEach(m => closeModal(m.id));
+        }
+    });
+
+    // Maquette de paiement : aucun appel réseau, aucune donnée transmise.
+    function fakePay(e) {
+        e.preventDefault();
+        const btn = document.getElementById('ckSubmit');
+        const original = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Traitement…';
+        setTimeout(() => {
+            btn.textContent = '✓ Démo — aucun paiement réel';
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = original;
+            }, 2200);
+        }, 1100);
+    }
+
+    // Passe l'étape 2 en "active" une fois le lien eToro ouvert
+    function markStep1() {
+        const steps = document.querySelectorAll('#freeModal .step');
+        steps.forEach(s => s.classList.add('active'));
+    }
+
+    /* ============ FAQ ============ */
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    /* ============ APPARITION AU SCROLL ============
+       On teste la position réelle des éléments plutôt que de se reposer sur
+       IntersectionObserver : un scroll rapide ou un lien d'ancre (#offre)
+       saute des sections sans déclencher l'observateur, et le contenu
+       resterait alors invisible en opacity:0. Ici, tout ce qui est passé
+       au-dessus de la ligne de déclenchement est révélé, sans exception. */
+    let pending = Array.from(document.querySelectorAll('.reveal'));
+    let ticking = false;
+
+    function applyReveal() {
+        ticking = false;
+        const line = window.innerHeight - 110;
+        pending = pending.filter(el => {
+            if (el.getBoundingClientRect().top < line) {
+                el.classList.add('active');
+                return false;
+            }
+            return true;
+        });
+        if (!pending.length) {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+        }
+    }
+
+    function onScroll() {
+        if (!ticking) { ticking = true; requestAnimationFrame(applyReveal); }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', applyReveal);
+    applyReveal();
+
+    </script>
+</body>
+</html>
