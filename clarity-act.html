@@ -2430,7 +2430,8 @@
         <div class="modal-box">
             <!-- Aucun paiement n'est traité : cette maquette sert uniquement à valider le design -->
             <div class="demo-banner">
-                ⚠️ Maquette de démonstration — aucun paiement n'est traité, aucune donnée n'est envoyée. N'entre pas de vraie carte bancaire.
+                ⚠️ Maquette de démonstration — aucun paiement n'est traité, aucune donnée n'est envoyée. N'entre pas de vraie carte bancaire.<br>
+                Pour activer le vrai paiement : renseigne STRIPE_PAYMENT_LINK en haut du script.
             </div>
 
             <div class="stripe-wrap">
@@ -2600,6 +2601,12 @@
     /* ==================================================================
        CONFIGURATION — les 3 seules valeurs à changer sur cette page
        ================================================================== */
+
+    // Lien de paiement Stripe (Stripe Dashboard > Liens de paiement).
+    // Tant que cette valeur est vide, les boutons d'achat ouvrent la maquette
+    // de démonstration. Dès que tu y colles ton lien (https://buy.stripe.com/...),
+    // ils envoient directement vers ton vrai paiement Stripe.
+    const STRIPE_PAYMENT_LINK = '';
 
     // Lien partenaire eToro. Remplace cette valeur par ton lien tracké
     // quand tu l'as : tous les boutons eToro de la page suivront.
@@ -2808,7 +2815,15 @@
         if (lastFocused) lastFocused.focus();
     }
 
-    function openCheckout() { openModal('checkoutModal'); }
+    function openCheckout() {
+        // Lien Stripe renseigné : on envoie le client sur le vrai paiement.
+        // Sinon, on ouvre la maquette pour pouvoir continuer à tester la page.
+        if (STRIPE_PAYMENT_LINK) {
+            window.location.href = STRIPE_PAYMENT_LINK;
+            return;
+        }
+        openModal('checkoutModal');
+    }
     function openFree()     { openModal('freeModal'); }
 
     // Fermeture au clic sur le fond
