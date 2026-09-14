@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci — Ton rapport CLARITY Act | Crypto Comiks</title>
+    <!-- Page de confirmation : ne doit jamais etre indexee par les moteurs -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --copper: #B87333;
+            --copper-light: #D4956A;
+            --copper-dark: #8B4513;
+            --bg-primary: #0D0D0D;
+            --bg-card: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --text-muted: #707070;
+            --border: #2A2A2A;
+            --success: #00D26A;
+            --warning: #FFB800;
+            --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Grain, comme sur le reste du site */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        .wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px 60px;
+            position: relative;
+        }
+
+        .wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(184,115,51,0.18), transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(0,210,106,0.07), transparent 55%);
+            pointer-events: none;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            max-width: 620px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 48px 44px;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+
+        .badge {
+            width: 74px; height: 74px;
+            margin: 0 auto 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success), #00A855);
+            display: grid;
+            place-items: center;
+            box-shadow: 0 12px 34px rgba(0, 210, 106, 0.32);
+        }
+
+        .badge svg { width: 38px; height: 38px; color: #04240F; }
+
+        .kicker {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--success);
+            margin-bottom: 14px;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: clamp(30px, 5.2vw, 42px);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin-bottom: 14px;
+        }
+
+        .lede {
+            font-size: 16.5px;
+            color: var(--text-secondary);
+            max-width: 46ch;
+            margin: 0 auto 34px;
+        }
+
+        .lede strong { color: var(--text-primary); font-weight: 600; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            padding: 18px 34px;
+            border-radius: 100px;
+            font-family: var(--sans);
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, var(--copper), var(--copper-dark));
+            color: #fff;
+            box-shadow: 0 12px 34px rgba(184, 115, 51, 0.34);
+            width: 100%;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 44px rgba(184, 115, 51, 0.48);
+        }
+
+        .btn svg { width: 20px; height: 20px; }
+
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 10px 22px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+            font-family: var(--mono);
+            font-size: 11.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 34px 0 26px;
+        }
+
+        .next {
+            text-align: left;
+            font-size: 14.5px;
+            color: var(--text-secondary);
+        }
+
+        .next h2 {
+            font-family: var(--serif);
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .next ul { list-style: none; }
+
+        .next li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 9px 0;
+        }
+
+        .next li span.n {
+            font-family: var(--mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--copper);
+            background: rgba(184,115,51,0.12);
+            border-radius: 6px;
+            padding: 3px 8px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .next a { color: var(--copper-light); }
+
+        /* Etat affiche tant qu'aucune URL de PDF n'est renseignee */
+        .setup {
+            background: rgba(255, 184, 0, 0.09);
+            border: 1px solid rgba(255, 184, 0, 0.3);
+            border-radius: 14px;
+            padding: 22px 24px;
+            text-align: left;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .setup b { color: var(--warning); }
+
+        .setup code {
+            font-family: var(--mono);
+            font-size: 12.5px;
+            background: rgba(255,255,255,0.07);
+            padding: 2px 7px;
+            border-radius: 4px;
+            color: var(--copper-light);
+            word-break: break-all;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+            border-top: 1px solid var(--border);
+            position: relative;
+        }
+
+        .footer-logo {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo span { color: var(--copper); }
+
+        .footer-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 560px) {
+            .card { padding: 36px 24px; border-radius: 18px; }
+            .btn-download { padding: 16px 22px; font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <main class="card">
+            <div class="badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6L9 17l-5-5"/>
+                </svg>
+            </div>
+
+            <div class="kicker">Paiement confirmé</div>
+            <h1>Merci — ton rapport est prêt</h1>
+            <p class="lede">
+                Ton paiement a bien été reçu. Tu peux télécharger le rapport
+                <strong>CLARITY Act</strong> dès maintenant. Un reçu t'a également été
+                envoyé par e-mail par Stripe.
+            </p>
+
+            <!-- Rempli par le script selon PDF_URL -->
+            <div id="zone"></div>
+
+            <div class="divider"></div>
+
+            <div class="next">
+                <h2>La suite</h2>
+                <ul>
+                    <li><span class="n">1</span><span>Enregistre le PDF sur ton appareil : ce lien est personnel, évite de le partager.</span></li>
+                    <li><span class="n">2</span><span>Les mises à jour des 12 prochains mois te seront envoyées à l'adresse utilisée lors du paiement.</span></li>
+                    <li><span class="n">3</span><span>Une question sur le rapport ? Écris-moi sur <a id="tgLink" href="#" target="_blank" rel="noopener">Telegram</a>, je réponds personnellement.</span></li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-logo">Crypto <span>Comiks</span></div>
+        <p class="footer-note">
+            Ce rapport est fourni à titre informatif et pédagogique uniquement et ne constitue pas
+            un conseil en investissement. Les crypto-actifs sont volatils : tu peux perdre tout ton
+            capital. DYOR.
+        </p>
+    </footer>
+
+    <script>
+    /* ==================================================================
+       CONFIGURATION — 2 valeurs a renseigner
+       ================================================================== */
+
+    // URL directe du PDF (Payhip, Google Drive, Dropbox...).
+    // Tant que cette valeur est vide, la page affiche la marche a suivre
+    // au lieu d'un bouton de telechargement casse.
+    const PDF_URL = '';
+
+    // Nom du fichier propose au telechargement.
+    const PDF_NOM = 'Rapport-CLARITY-Act-2026-Crypto-Comiks.pdf';
+
+    // Compte Telegram, identique a celui de la landing.
+    const TELEGRAM_HANDLE = 'cryptocomiks';
+
+    /* ================================================================== */
+
+    document.getElementById('tgLink').href = 'https://t.me/' + TELEGRAM_HANDLE;
+
+    const zone = document.getElementById('zone');
+
+    if (PDF_URL) {
+        zone.innerHTML =
+            '<a class="btn btn-download" href="' + PDF_URL + '" download="' + PDF_NOM + '" target="_blank" rel="noopener">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">' +
+                    '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/>' +
+                '</svg>' +
+                'Télécharger le rapport (PDF)' +
+            '</a>' +
+            '<div class="meta"><span>PDF · 148 pages</span><span>Français</span><span>Accès à vie</span></div>';
+    } else {
+        // Garde-fou : mieux vaut une consigne claire qu'un bouton mort
+        zone.innerHTML =
+            '<div class="setup">' +
+                '<b>⚙️ Page pas encore active.</b><br>' +
+                'Héberge le PDF (Payhip, Google Drive, Dropbox…), copie son lien direct, ' +
+                'puis renseigne <code>PDF_URL</code> en haut du script de ce fichier ' +
+                '(<code>merci.html</code>). Le bouton de téléchargement apparaîtra automatiquement.<br><br>' +
+                'Pense aussi à indiquer cette page dans Stripe : lien de paiement → ' +
+                '<i>Après le paiement</i> → <i>Rediriger vers ton site</i>.' +
+            '</div>';
+    }
+    </script>
+</body>
+</html>
