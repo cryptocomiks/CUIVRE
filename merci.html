@@ -165,6 +165,18 @@
             color: var(--text-muted);
         }
 
+        .alt-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+
+        .alt-link:hover { color: var(--copper-light); }
+
         .divider {
             height: 1px;
             background: var(--border);
@@ -311,12 +323,17 @@
        CONFIGURATION — 2 valeurs a renseigner
        ================================================================== */
 
-    // URL directe du PDF (Payhip, Google Drive, Dropbox...).
-    // Tant que cette valeur est vide, la page affiche la marche a suivre
-    // au lieu d'un bouton de telechargement casse.
-    const PDF_URL = '';
+    // Telechargement direct du PDF. Vide => la page affiche la marche a
+    // suivre au lieu d'un bouton casse.
+    const PDF_URL = 'https://drive.google.com/uc?export=download&id=1uKfrGzzFNau3bKC3KuxMkfIRrwVr26QV';
 
-    // Nom du fichier propose au telechargement.
+    // Repli : consultation dans le navigateur. Google intercale parfois un
+    // avertissement d'analyse antivirus sur les fichiers volumineux ; ce lien
+    // permet a l'acheteur d'ouvrir le PDF et de le telecharger depuis Drive.
+    const PDF_URL_APERCU = 'https://drive.google.com/file/d/1uKfrGzzFNau3bKC3KuxMkfIRrwVr26QV/view';
+
+    // Nom de fichier suggere. Les navigateurs ignorent l'attribut download
+    // sur un lien vers un autre domaine : le nom reel viendra de Drive.
     const PDF_NOM = 'Rapport-CLARITY-Act-2026-Crypto-Comiks.pdf';
 
     // Compte Telegram, identique a celui de la landing.
@@ -336,7 +353,8 @@
                 '</svg>' +
                 'Télécharger le rapport (PDF)' +
             '</a>' +
-            '<div class="meta"><span>PDF · 148 pages</span><span>Français</span><span>Accès à vie</span></div>';
+            '<div class="meta"><span>PDF · 148 pages</span><span>Français</span><span>Accès à vie</span></div>' +
+            (PDF_URL_APERCU ? '<a class="alt-link" href="' + PDF_URL_APERCU + '" target="_blank" rel="noopener">Le téléchargement ne démarre pas ? Ouvrir le PDF dans le navigateur →</a>' : '');
     } else {
         // Garde-fou : mieux vaut une consigne claire qu'un bouton mort
         zone.innerHTML =
